@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Forgot Password | Eco Life</title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =====================================
+           RESET
+        ===================================== */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+
+        min-height: 100vh;
+      }
+
+      /* =====================================
+           MAIN PAGE
+        ===================================== */
+
+      .forgot-page {
+        min-height: 100vh;
+
+        width: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: relative;
+
+        overflow: hidden;
+
+        padding: 25px;
+
+        background-image:
+          linear-gradient(rgba(20, 55, 38, 0.6), rgba(20, 55, 38, 0.72)),
+          url("images/eco-forgot-bg.jpg");
+
+        background-size: cover;
+
+        background-position: center;
+
+        background-repeat: no-repeat;
+
+        transition: background-position 0.3s ease;
+      }
+
+      /* =====================================
+           DECORATIVE CIRCLES
+        ===================================== */
+
+      .circle {
+        position: absolute;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        pointer-events: none;
+      }
+
+      .circle-one {
+        width: 420px;
+
+        height: 420px;
+
+        top: -180px;
+
+        left: -150px;
+
+        animation: floatOne 8s ease-in-out infinite;
+      }
+
+      .circle-two {
+        width: 320px;
+
+        height: 320px;
+
+        bottom: -140px;
+
+        right: -100px;
+
+        animation: floatTwo 7s ease-in-out infinite;
+      }
+
+      @keyframes floatOne {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(25px);
+        }
+      }
+
+      @keyframes floatTwo {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-25px);
+        }
+      }
+
+      /* =====================================
+           MAIN CONTAINER
+        ===================================== */
+
+      .forgot-container {
+        width: 100%;
+
+        max-width: 1000px;
+
+        min-height: 570px;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        position: relative;
+
+        z-index: 2;
+
+        border-radius: 28px;
+
+        overflow: hidden;
+
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+
+        animation: appear 0.8s ease;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+
+          transform: translateY(35px);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: translateY(0);
+        }
+      }
+
+      /* =====================================
+           LEFT ECO SECTION
+        ===================================== */
+
+      .eco-section {
+        padding: 50px 45px;
+
+        color: white;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: space-between;
+
+        background: linear-gradient(
+          rgba(24, 76, 49, 0.72),
+          rgba(24, 76, 49, 0.84)
+        );
+      }
+
+      /* =====================================
+           LOGO
+        ===================================== */
+
+      .eco-logo {
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+      }
+
+      .eco-logo-icon {
+        width: 48px;
+
+        height: 48px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: white;
+
+        color: #2f7d4c;
+
+        font-size: 24px;
+      }
+
+      .eco-logo-text {
+        font-size: 25px;
+
+        font-weight: 700;
+      }
+
+      /* =====================================
+           LEFT CONTENT
+        ===================================== */
+
+      .eco-content {
+        max-width: 400px;
+      }
+
+      .eco-tag {
+        display: inline-block;
+
+        padding: 7px 14px;
+
+        margin-bottom: 18px;
+
+        border-radius: 30px;
+
+        background: rgba(255, 255, 255, 0.14);
+
+        border: 1px solid rgba(255, 255, 255, 0.25);
+
+        font-size: 11px;
+
+        letter-spacing: 1px;
+
+        text-transform: uppercase;
+      }
+
+      .eco-content h1 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 42px;
+
+        line-height: 1.15;
+
+        margin-bottom: 18px;
+      }
+
+      .eco-content h1 span {
+        color: #b9e6a5;
+      }
+
+      .eco-content p {
+        color: rgba(255, 255, 255, 0.83);
+
+        font-size: 14px;
+
+        line-height: 1.8;
+      }
+
+      /* =====================================
+           ECO FEATURES
+        ===================================== */
+
+      .eco-features {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+      }
+
+      .eco-feature {
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        font-size: 12px;
+
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .eco-feature span {
+        width: 29px;
+
+        height: 29px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      /* =====================================
+           RIGHT FORM SECTION
+        ===================================== */
+
+      .form-section {
+        background: rgba(255, 255, 255, 0.97);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 50px 45px;
+      }
+
+      .forgot-box {
+        width: 100%;
+
+        max-width: 380px;
+      }
+
+      /* =====================================
+           ICON
+        ===================================== */
+
+      .forgot-icon {
+        width: 70px;
+
+        height: 70px;
+
+        margin-bottom: 20px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: #eaf5ec;
+
+        color: #3d8654;
+
+        font-size: 30px;
+      }
+
+      /* =====================================
+           HEADING
+        ===================================== */
+
+      .forgot-heading {
+        margin-bottom: 25px;
+      }
+
+      .forgot-heading h2 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 32px;
+
+        color: #214c32;
+
+        margin-bottom: 8px;
+      }
+
+      .forgot-heading p {
+        color: #718078;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+      }
+
+      /* =====================================
+           FORM
+        ===================================== */
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+
+        color: #304c3a;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        margin-bottom: 8px;
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      .input-wrapper input {
+        width: 100%;
+
+        height: 51px;
+
+        padding: 0 45px 0 15px;
+
+        border: 1px solid #dce6df;
+
+        border-radius: 11px;
+
+        outline: none;
+
+        background: #f8faf8;
+
+        color: #26382d;
+
+        font-family: "DM Sans", sans-serif;
+
+        font-size: 13px;
+
+        transition: 0.3s;
+      }
+
+      .input-wrapper input::placeholder {
+        color: #a1ada5;
+      }
+
+      .input-wrapper input:focus {
+        border-color: #5a9b68;
+
+        background: white;
+
+        box-shadow: 0 0 0 4px rgba(90, 155, 104, 0.1);
+      }
+
+      .input-icon {
+        position: absolute;
+
+        right: 15px;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        color: #70917b;
+
+        font-size: 17px;
+      }
+
+      /* =====================================
+           RESET BUTTON
+        ===================================== */
+
+      .reset-btn {
+        width: 100%;
+
+        height: 51px;
+
+        border: none;
+
+        border-radius: 11px;
+
+        background: linear-gradient(135deg, #2f7d4c, #4f9860);
+
+        color: white;
+
+        font-family: "DM Sans", sans-serif;
+
+        font-size: 14px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+
+        box-shadow: 0 8px 20px rgba(47, 125, 76, 0.22);
+      }
+
+      .reset-btn:hover {
+        transform: translateY(-2px);
+
+        box-shadow: 0 12px 25px rgba(47, 125, 76, 0.3);
+      }
+
+      .reset-btn:active {
+        transform: scale(0.98);
+      }
+
+      .reset-btn:disabled {
+        opacity: 0.7;
+
+        cursor: not-allowed;
+      }
+
+      /* =====================================
+           MESSAGES
+        ===================================== */
+
+      .message {
+        display: none;
+
+        padding: 10px 12px;
+
+        border-radius: 8px;
+
+        font-size: 11px;
+
+        line-height: 1.5;
+
+        margin-bottom: 16px;
+      }
+
+      .error {
+        color: #a33c3c;
+
+        background: #fff0f0;
+
+        border: 1px solid #f2cccc;
+      }
+
+      .success {
+        color: #347047;
+
+        background: #eef9f0;
+
+        border: 1px solid #cbe6d0;
+      }
+
+      /* =====================================
+           BACK TO LOGIN
+        ===================================== */
+
+      .back-login {
+        display: flex;
+
+        justify-content: center;
+
+        margin-top: 23px;
+      }
+
+      .back-login a {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        color: #347c4d;
+
+        text-decoration: none;
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        transition: 0.3s;
+      }
+
+      .back-login a:hover {
+        gap: 10px;
+      }
+
+      /* =====================================
+           REGISTER
+        ===================================== */
+
+      .register-text {
+        text-align: center;
+
+        color: #718078;
+
+        font-size: 12px;
+
+        margin-top: 15px;
+      }
+
+      .register-text a {
+        color: #347c4d;
+
+        text-decoration: none;
+
+        font-weight: 700;
+      }
+
+      .register-text a:hover {
+        text-decoration: underline;
+      }
+
+      /* =====================================
+           TABLET
+        ===================================== */
+
+      @media (max-width: 850px) {
+        .forgot-container {
+          max-width: 650px;
+
+          grid-template-columns: 1fr;
+        }
+
+        .eco-section {
+          min-height: 350px;
+
+          padding: 40px;
+        }
+
+        .eco-content {
+          margin: 35px 0;
+        }
+
+        .form-section {
+          padding: 40px;
+        }
+      }
+
+      /* =====================================
+           MOBILE
+        ===================================== */
+
+      @media (max-width: 500px) {
+        .forgot-page {
+          padding: 15px;
+        }
+
+        .forgot-container {
+          border-radius: 20px;
+        }
+
+        .eco-section {
+          padding: 30px 23px;
+        }
+
+        .eco-logo-text {
+          font-size: 21px;
+        }
+
+        .eco-logo-icon {
+          width: 42px;
+
+          height: 42px;
+
+          font-size: 21px;
+        }
+
+        .eco-content {
+          margin: 25px 0;
+        }
+
+        .eco-content h1 {
+          font-size: 30px;
+        }
+
+        .eco-content p {
+          font-size: 13px;
+        }
+
+        .form-section {
+          padding: 32px 23px;
+        }
+
+        .forgot-heading h2 {
+          font-size: 28px;
+        }
+
+        .forgot-icon {
+          width: 60px;
+
+          height: 60px;
+
+          font-size: 26px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="forgot-page" id="forgotPage">
+      <!-- Decorative circles -->
+
+      <div class="circle circle-one"></div>
+
+      <div class="circle circle-two"></div>
+
+      <div class="forgot-container">
+        <!-- =================================
+                 ECO LIFE INTRO
+            ================================== -->
+
+        <section class="eco-section">
+          <!-- Logo -->
+
+          <div class="eco-logo">
+            <div class="eco-logo-icon">🌿</div>
+
+            <div class="eco-logo-text">Eco Life</div>
+          </div>
+
+          <!-- Content -->
+
+          <div class="eco-content">
+            <span class="eco-tag"> Your Sustainable Journey </span>
+
+            <h1>
+              Stay Connected
+              <span>with Nature.</span>
+            </h1>
+
+            <p>
+              Forgot your password? Don't worry. We'll help you get back to your
+              Eco Life account so you can continue discovering sustainable and
+              zero-waste living.
+            </p>
+          </div>
+
+          <!-- Features -->
+
+          <div class="eco-features">
+            <div class="eco-feature">
+              <span>♻</span>
+
+              Sustainable Living
+            </div>
+
+            <div class="eco-feature">
+              <span>🌱</span>
+
+              Zero Waste
+            </div>
+
+            <div class="eco-feature">
+              <span>💚</span>
+
+              Better Planet
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================
+                 FORM SECTION
+            ================================== -->
+
+        <section class="form-section">
+          <div class="forgot-box">
+            <!-- Icon -->
+
+            <div class="forgot-icon">🔐</div>
+
+            <!-- Heading -->
+
+            <div class="forgot-heading">
+              <h2>Forgot Password?</h2>
+
+              <p>
+                Enter the email address associated with your Eco Life account
+                and we'll help you reset your password.
+              </p>
+            </div>
+
+            <!-- Form -->
+
+            <form id="forgotForm">
+              <!-- Error -->
+
+              <div class="message error" id="errorMessage"></div>
+
+              <!-- Success -->
+
+              <div class="message success" id="successMessage"></div>
+
+              <!-- Email -->
+
+              <div class="form-group">
+                <label for="email"> Email Address </label>
+
+                <div class="input-wrapper">
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+
+                  <span class="input-icon"> ✉ </span>
+                </div>
+              </div>
+
+              <!-- Button -->
+
+              <button type="submit" class="reset-btn" id="resetButton">
+                Send Reset Link
+              </button>
+            </form>
+
+            <!-- Back Login -->
+
+            <div class="back-login">
+              <a href="login.html"> ← Back to Login </a>
+            </div>
+
+            <!-- Register -->
+
+            <div class="register-text">
+              Don't have an account?
+
+              <a href="register.html"> Create Account </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- =====================================
+         JAVASCRIPT
+    ===================================== -->
+
+    <script>
+      /* =====================================
+           ELEMENTS
+        ===================================== */
+
+      const forgotForm = document.getElementById("forgotForm");
+
+      const email = document.getElementById("email");
+
+      const resetButton = document.getElementById("resetButton");
+
+      const errorMessage = document.getElementById("errorMessage");
+
+      const successMessage = document.getElementById("successMessage");
+
+      const forgotPage = document.getElementById("forgotPage");
+
+      /* =====================================
+           FORM SUBMISSION
+        ===================================== */
+
+      forgotForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        errorMessage.style.display = "none";
+
+        successMessage.style.display = "none";
+
+        const emailValue = email.value.trim();
+
+        /* =================================
+                   EMAIL VALIDATION
+                ================================= */
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailValue === "") {
+          showError("Please enter your email address.");
+
+          return;
+        }
+
+        if (!emailPattern.test(emailValue)) {
+          showError("Please enter a valid email address.");
+
+          return;
+        }
+
+        /* =================================
+                   CHECK REGISTERED USER
+                ================================= */
+
+        const savedUser = localStorage.getItem("ecoLifeUser");
+
+        if (savedUser) {
+          const user = JSON.parse(savedUser);
+
+          if (user.email.toLowerCase() !== emailValue.toLowerCase()) {
+            showError("We couldn't find an account with this email address.");
+
+            return;
+          }
+        }
+
+        /* =================================
+                   LOADING
+                ================================= */
+
+        resetButton.disabled = true;
+
+        resetButton.textContent = "Sending...";
+
+        /* =================================
+                   SIMULATE RESET EMAIL
+                ================================= */
+
+        setTimeout(function () {
+          successMessage.textContent =
+            "A password reset link has been sent to your email address. Please check your inbox.";
+
+          successMessage.style.display = "block";
+
+          resetButton.textContent = "Reset Link Sent ✓";
+        }, 1200);
+      });
+
+      /* =====================================
+           ERROR FUNCTION
+        ===================================== */
+
+      function showError(message) {
+        errorMessage.textContent = message;
+
+        errorMessage.style.display = "block";
+      }
+
+      /* =====================================
+           CLEAR ERROR
+        ===================================== */
+
+      email.addEventListener("input", function () {
+        errorMessage.style.display = "none";
+
+        successMessage.style.display = "none";
+      });
+
+      /* =====================================
+           INTERACTIVE BACKGROUND
+        ===================================== */
+
+      forgotPage.addEventListener("mousemove", function (event) {
+        /* Disable on mobile */
+
+        if (window.innerWidth <= 768) {
+          return;
+        }
+
+        const x = (event.clientX / window.innerWidth - 0.5) * 8;
+
+        const y = (event.clientY / window.innerHeight - 0.5) * 8;
+
+        forgotPage.style.backgroundPosition = `calc(50% + ${x}px)
+                     calc(50% + ${y}px)`;
+      });
+
+      /* =====================================
+           RESET BACKGROUND
+        ===================================== */
+
+      forgotPage.addEventListener("mouseleave", function () {
+        forgotPage.style.backgroundPosition = "center";
+      });
+    </script>
+  </body>
+</html>
+```

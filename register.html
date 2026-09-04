@@ -1,0 +1,1208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Create Account | Eco Life</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =====================================
+           RESET
+        ===================================== */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        min-height: 100vh;
+      }
+
+      /* =====================================
+           MAIN PAGE
+        ===================================== */
+
+      .register-page {
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+
+        overflow: hidden;
+
+        padding: 30px;
+
+        background-image:
+          linear-gradient(rgba(20, 55, 38, 0.6), rgba(20, 55, 38, 0.7)),
+          url("images/eco-register-bg.jpg");
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        transition: background-position 0.3s ease;
+      }
+
+      /* =====================================
+           DECORATIVE CIRCLES
+        ===================================== */
+
+      .circle {
+        position: absolute;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        pointer-events: none;
+      }
+
+      .circle-one {
+        width: 430px;
+        height: 430px;
+
+        top: -190px;
+        left: -160px;
+
+        animation: floatOne 8s ease-in-out infinite;
+      }
+
+      .circle-two {
+        width: 320px;
+        height: 320px;
+
+        bottom: -150px;
+        right: -110px;
+
+        animation: floatTwo 7s ease-in-out infinite;
+      }
+
+      @keyframes floatOne {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(25px);
+        }
+      }
+
+      @keyframes floatTwo {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-25px);
+        }
+      }
+
+      /* =====================================
+           REGISTER WRAPPER
+        ===================================== */
+
+      .register-wrapper {
+        width: 100%;
+        max-width: 1050px;
+
+        display: grid;
+
+        grid-template-columns: 0.9fr 1.1fr;
+
+        position: relative;
+
+        z-index: 2;
+
+        border-radius: 28px;
+
+        overflow: hidden;
+
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+
+        animation: appear 0.8s ease;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(35px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* =====================================
+           LEFT ECO SECTION
+        ===================================== */
+
+      .eco-intro {
+        min-height: 650px;
+
+        padding: 50px 42px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: space-between;
+
+        color: white;
+
+        background: linear-gradient(
+          rgba(24, 76, 49, 0.72),
+          rgba(24, 76, 49, 0.84)
+        );
+      }
+
+      /* LOGO */
+
+      .eco-logo {
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+      }
+
+      .eco-logo-icon {
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: white;
+
+        color: #2f7d4c;
+
+        font-size: 25px;
+      }
+
+      .eco-logo-text {
+        font-size: 25px;
+
+        font-weight: 700;
+      }
+
+      /* LEFT CONTENT */
+
+      .eco-content {
+        max-width: 410px;
+      }
+
+      .eco-tag {
+        display: inline-block;
+
+        padding: 7px 14px;
+
+        margin-bottom: 18px;
+
+        border-radius: 30px;
+
+        background: rgba(255, 255, 255, 0.14);
+
+        border: 1px solid rgba(255, 255, 255, 0.25);
+
+        font-size: 11px;
+
+        letter-spacing: 1px;
+
+        text-transform: uppercase;
+      }
+
+      .eco-content h1 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 42px;
+
+        line-height: 1.15;
+
+        margin-bottom: 18px;
+      }
+
+      .eco-content h1 span {
+        color: #b9e6a5;
+      }
+
+      .eco-content p {
+        color: rgba(255, 255, 255, 0.83);
+
+        font-size: 14px;
+
+        line-height: 1.8;
+      }
+
+      /* ECO BENEFITS */
+
+      .eco-benefits {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 13px;
+      }
+
+      .benefit {
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        font-size: 13px;
+
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .benefit-icon {
+        width: 32px;
+        height: 32px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      /* =====================================
+           FORM SECTION
+        ===================================== */
+
+      .register-section {
+        background: rgba(255, 255, 255, 0.97);
+
+        padding: 45px 45px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+      }
+
+      .register-box {
+        width: 100%;
+
+        max-width: 450px;
+      }
+
+      /* =====================================
+           HEADING
+        ===================================== */
+
+      .register-heading {
+        margin-bottom: 25px;
+      }
+
+      .register-heading h2 {
+        font-family: "Playfair Display", serif;
+
+        color: #214c32;
+
+        font-size: 31px;
+
+        margin-bottom: 7px;
+      }
+
+      .register-heading p {
+        color: #718078;
+
+        font-size: 13px;
+
+        line-height: 1.6;
+      }
+
+      /* =====================================
+           FORM GRID
+        ===================================== */
+
+      .form-row {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 15px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+
+        color: #304c3a;
+
+        font-size: 12px;
+
+        font-weight: 600;
+
+        margin-bottom: 7px;
+      }
+
+      /* =====================================
+           INPUT
+        ===================================== */
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      .input-wrapper input {
+        width: 100%;
+
+        height: 47px;
+
+        padding: 0 43px 0 14px;
+
+        border: 1px solid #dce6df;
+
+        border-radius: 10px;
+
+        outline: none;
+
+        background: #f8faf8;
+
+        color: #26382d;
+
+        font-family: "DM Sans", sans-serif;
+
+        font-size: 13px;
+
+        transition: 0.3s;
+      }
+
+      .input-wrapper input:focus {
+        border-color: #5a9b68;
+
+        background: white;
+
+        box-shadow: 0 0 0 4px rgba(90, 155, 104, 0.1);
+      }
+
+      .input-wrapper input::placeholder {
+        color: #a1ada5;
+      }
+
+      .input-icon {
+        position: absolute;
+
+        right: 14px;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        color: #70917b;
+
+        font-size: 16px;
+      }
+
+      /* =====================================
+           PASSWORD TOGGLE
+        ===================================== */
+
+      .password-toggle {
+        cursor: pointer;
+
+        user-select: none;
+
+        transition: 0.2s;
+      }
+
+      .password-toggle:hover {
+        color: #2f7d4c;
+
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      /* =====================================
+           PASSWORD STRENGTH
+        ===================================== */
+
+      .strength-container {
+        margin-top: 7px;
+      }
+
+      .strength-bar {
+        width: 100%;
+
+        height: 4px;
+
+        border-radius: 10px;
+
+        background: #e6ece7;
+
+        overflow: hidden;
+      }
+
+      .strength-fill {
+        width: 0%;
+
+        height: 100%;
+
+        border-radius: 10px;
+
+        transition: 0.3s;
+      }
+
+      .strength-text {
+        display: block;
+
+        margin-top: 4px;
+
+        font-size: 10px;
+
+        color: #849087;
+      }
+
+      /* =====================================
+           TERMS
+        ===================================== */
+
+      .terms {
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 8px;
+
+        margin: 5px 0 20px;
+
+        color: #718078;
+
+        font-size: 11px;
+
+        line-height: 1.5;
+      }
+
+      .terms input {
+        margin-top: 3px;
+
+        accent-color: #3d8654;
+
+        cursor: pointer;
+      }
+
+      .terms a {
+        color: #3d8654;
+
+        text-decoration: none;
+
+        font-weight: 600;
+      }
+
+      .terms a:hover {
+        text-decoration: underline;
+      }
+
+      /* =====================================
+           BUTTON
+        ===================================== */
+
+      .register-btn {
+        width: 100%;
+
+        height: 50px;
+
+        border: none;
+
+        border-radius: 11px;
+
+        background: linear-gradient(135deg, #2f7d4c, #4f9860);
+
+        color: white;
+
+        font-family: "DM Sans", sans-serif;
+
+        font-size: 14px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+
+        box-shadow: 0 8px 20px rgba(47, 125, 76, 0.22);
+      }
+
+      .register-btn:hover {
+        transform: translateY(-2px);
+
+        box-shadow: 0 12px 25px rgba(47, 125, 76, 0.3);
+      }
+
+      .register-btn:active {
+        transform: scale(0.98);
+      }
+
+      .register-btn:disabled {
+        opacity: 0.7;
+
+        cursor: not-allowed;
+
+        transform: none;
+      }
+
+      /* =====================================
+           MESSAGES
+        ===================================== */
+
+      .message {
+        display: none;
+
+        padding: 9px 12px;
+
+        border-radius: 8px;
+
+        font-size: 11px;
+
+        margin-bottom: 15px;
+
+        line-height: 1.5;
+      }
+
+      .error {
+        color: #a33c3c;
+
+        background: #fff0f0;
+
+        border: 1px solid #f2cccc;
+      }
+
+      .success {
+        color: #347047;
+
+        background: #eef9f0;
+
+        border: 1px solid #cbe6d0;
+      }
+
+      /* =====================================
+           LOGIN LINK
+        ===================================== */
+
+      .login-link {
+        text-align: center;
+
+        margin-top: 20px;
+
+        color: #718078;
+
+        font-size: 12px;
+      }
+
+      .login-link a {
+        color: #347c4d;
+
+        text-decoration: none;
+
+        font-weight: 700;
+
+        margin-left: 4px;
+      }
+
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* =====================================
+           TABLET
+        ===================================== */
+
+      @media (max-width: 850px) {
+        .register-wrapper {
+          max-width: 650px;
+
+          grid-template-columns: 1fr;
+        }
+
+        .eco-intro {
+          min-height: auto;
+
+          padding: 40px;
+        }
+
+        .eco-content {
+          margin: 35px 0;
+        }
+
+        .register-section {
+          padding: 40px;
+        }
+      }
+
+      /* =====================================
+           MOBILE
+        ===================================== */
+
+      @media (max-width: 520px) {
+        .register-page {
+          padding: 15px;
+        }
+
+        .register-wrapper {
+          border-radius: 20px;
+        }
+
+        .eco-intro {
+          padding: 30px 23px;
+        }
+
+        .eco-logo-text {
+          font-size: 21px;
+        }
+
+        .eco-content h1 {
+          font-size: 30px;
+        }
+
+        .eco-content p {
+          font-size: 13px;
+        }
+
+        .register-section {
+          padding: 30px 22px;
+        }
+
+        .register-heading h2 {
+          font-size: 27px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+
+          gap: 0;
+        }
+
+        .input-wrapper input {
+          height: 48px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="register-page" id="registerPage">
+      <!-- Decorative background circles -->
+
+      <div class="circle circle-one"></div>
+      <div class="circle circle-two"></div>
+
+      <div class="register-wrapper">
+        <!-- =================================
+                 ECO LIFE INTRO
+            ================================== -->
+
+        <section class="eco-intro">
+          <!-- LOGO -->
+
+          <div class="eco-logo">
+            <div class="eco-logo-icon">🌿</div>
+
+            <div class="eco-logo-text">Eco Life</div>
+          </div>
+
+          <!-- CONTENT -->
+
+          <div class="eco-content">
+            <span class="eco-tag"> Join The Green Community </span>
+
+            <h1>
+              Start Your
+              <span>Eco Journey.</span>
+            </h1>
+
+            <p>
+              Create your Eco Life account and discover sustainable products,
+              reusable essentials, zero-waste ideas and simple ways to live
+              better for our planet.
+            </p>
+          </div>
+
+          <!-- BENEFITS -->
+
+          <div class="eco-benefits">
+            <div class="benefit">
+              <div class="benefit-icon">♻</div>
+
+              Shop sustainable products
+            </div>
+
+            <div class="benefit">
+              <div class="benefit-icon">🌱</div>
+
+              Discover zero-waste ideas
+            </div>
+
+            <div class="benefit">
+              <div class="benefit-icon">💚</div>
+
+              Make greener everyday choices
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================
+                 REGISTER FORM
+            ================================== -->
+
+        <section class="register-section">
+          <div class="register-box">
+            <!-- HEADING -->
+
+            <div class="register-heading">
+              <h2>Create Your Account</h2>
+
+              <p>
+                Join Eco Life and take your first step toward a more sustainable
+                lifestyle.
+              </p>
+            </div>
+
+            <form id="registerForm">
+              <!-- ERROR -->
+
+              <div class="message error" id="errorMessage"></div>
+
+              <!-- SUCCESS -->
+
+              <div class="message success" id="successMessage">
+                Your Eco Life account has been created successfully! 🌿
+              </div>
+
+              <!-- FIRST + LAST NAME -->
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName"> First Name </label>
+
+                  <div class="input-wrapper">
+                    <input
+                      type="text"
+                      id="firstName"
+                      placeholder="First name"
+                      required
+                    />
+
+                    <span class="input-icon"> 👤 </span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="lastName"> Last Name </label>
+
+                  <div class="input-wrapper">
+                    <input
+                      type="text"
+                      id="lastName"
+                      placeholder="Last name"
+                      required
+                    />
+
+                    <span class="input-icon"> 👤 </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EMAIL -->
+
+              <div class="form-group">
+                <label for="email"> Email Address </label>
+
+                <div class="input-wrapper">
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+
+                  <span class="input-icon"> ✉ </span>
+                </div>
+              </div>
+
+              <!-- PASSWORD -->
+
+              <div class="form-group">
+                <label for="password"> Password </label>
+
+                <div class="input-wrapper">
+                  <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    required
+                  />
+
+                  <span class="input-icon password-toggle" id="togglePassword">
+                    👁
+                  </span>
+                </div>
+
+                <!-- Password strength -->
+
+                <div class="strength-container">
+                  <div class="strength-bar">
+                    <div class="strength-fill" id="strengthFill"></div>
+                  </div>
+
+                  <span class="strength-text" id="strengthText">
+                    Password strength
+                  </span>
+                </div>
+              </div>
+
+              <!-- CONFIRM PASSWORD -->
+
+              <div class="form-group">
+                <label for="confirmPassword"> Confirm Password </label>
+
+                <div class="input-wrapper">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm your password"
+                    autocomplete="new-password"
+                    required
+                  />
+
+                  <span
+                    class="input-icon password-toggle"
+                    id="toggleConfirmPassword"
+                  >
+                    👁
+                  </span>
+                </div>
+              </div>
+
+              <!-- TERMS -->
+
+              <label class="terms">
+                <input type="checkbox" id="terms" required />
+
+                <span>
+                  I agree to the
+                  <a href="terms.html"> Terms & Conditions </a>
+                  and
+                  <a href="privacy.html"> Privacy Policy </a>.
+                </span>
+              </label>
+
+              <!-- REGISTER BUTTON -->
+
+              <button type="submit" class="register-btn" id="registerButton">
+                Create Account
+              </button>
+            </form>
+
+            <!-- LOGIN -->
+
+            <div class="login-link">
+              Already have an account?
+
+              <a href="login.html"> Sign In </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- =====================================
+         JAVASCRIPT
+    ===================================== -->
+
+    <script>
+      /* =====================================
+           ELEMENTS
+        ===================================== */
+
+      const registerForm = document.getElementById("registerForm");
+
+      const firstName = document.getElementById("firstName");
+
+      const lastName = document.getElementById("lastName");
+
+      const email = document.getElementById("email");
+
+      const password = document.getElementById("password");
+
+      const confirmPassword = document.getElementById("confirmPassword");
+
+      const terms = document.getElementById("terms");
+
+      const togglePassword = document.getElementById("togglePassword");
+
+      const toggleConfirmPassword = document.getElementById(
+        "toggleConfirmPassword",
+      );
+
+      const strengthFill = document.getElementById("strengthFill");
+
+      const strengthText = document.getElementById("strengthText");
+
+      const registerButton = document.getElementById("registerButton");
+
+      const errorMessage = document.getElementById("errorMessage");
+
+      const successMessage = document.getElementById("successMessage");
+
+      const registerPage = document.getElementById("registerPage");
+
+      /* =====================================
+           SHOW / HIDE PASSWORD
+        ===================================== */
+
+      togglePassword.addEventListener("click", function () {
+        if (password.type === "password") {
+          password.type = "text";
+
+          togglePassword.textContent = "🙈";
+        } else {
+          password.type = "password";
+
+          togglePassword.textContent = "👁";
+        }
+      });
+
+      toggleConfirmPassword.addEventListener("click", function () {
+        if (confirmPassword.type === "password") {
+          confirmPassword.type = "text";
+
+          toggleConfirmPassword.textContent = "🙈";
+        } else {
+          confirmPassword.type = "password";
+
+          toggleConfirmPassword.textContent = "👁";
+        }
+      });
+
+      /* =====================================
+           PASSWORD STRENGTH
+        ===================================== */
+
+      password.addEventListener("input", function () {
+        const value = password.value;
+
+        let strength = 0;
+
+        if (value.length >= 6) {
+          strength++;
+        }
+
+        if (value.length >= 10) {
+          strength++;
+        }
+
+        if (/[A-Z]/.test(value)) {
+          strength++;
+        }
+
+        if (/[0-9]/.test(value)) {
+          strength++;
+        }
+
+        if (/[^A-Za-z0-9]/.test(value)) {
+          strength++;
+        }
+
+        if (value.length === 0) {
+          strengthFill.style.width = "0%";
+
+          strengthText.textContent = "Password strength";
+        } else if (strength <= 2) {
+          strengthFill.style.width = "35%";
+
+          strengthText.textContent = "Weak password";
+        } else if (strength <= 3) {
+          strengthFill.style.width = "65%";
+
+          strengthText.textContent = "Medium password";
+        } else {
+          strengthFill.style.width = "100%";
+
+          strengthText.textContent = "Strong password";
+        }
+      });
+
+      /* =====================================
+           REGISTRATION
+        ===================================== */
+
+      registerForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        errorMessage.style.display = "none";
+
+        successMessage.style.display = "none";
+
+        /* Required fields */
+
+        if (
+          firstName.value.trim() === "" ||
+          lastName.value.trim() === "" ||
+          email.value.trim() === "" ||
+          password.value.trim() === "" ||
+          confirmPassword.value.trim() === ""
+        ) {
+          showError("Please complete all required fields.");
+
+          return;
+        }
+
+        /* Email */
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email.value.trim())) {
+          showError("Please enter a valid email address.");
+
+          return;
+        }
+
+        /* Password */
+
+        if (password.value.length < 6) {
+          showError("Password must contain at least 6 characters.");
+
+          return;
+        }
+
+        /* Confirm password */
+
+        if (password.value !== confirmPassword.value) {
+          showError("Passwords do not match.");
+
+          return;
+        }
+
+        /* Terms */
+
+        if (!terms.checked) {
+          showError("Please agree to the Terms & Conditions.");
+
+          return;
+        }
+
+        /* Loading */
+
+        registerButton.disabled = true;
+
+        registerButton.textContent = "Creating Account...";
+
+        /* =================================
+                   SAVE USER USING LOCAL STORAGE
+                ================================= */
+
+        const user = {
+          firstName: firstName.value.trim(),
+
+          lastName: lastName.value.trim(),
+
+          email: email.value.trim(),
+
+          password: password.value,
+        };
+
+        localStorage.setItem("ecoLifeUser", JSON.stringify(user));
+
+        /* Success */
+
+        setTimeout(function () {
+          successMessage.style.display = "block";
+
+          registerButton.textContent = "Account Created ✓";
+
+          /*
+                       After registration you can
+                       redirect to login:
+
+                       window.location.href =
+                       "login.html";
+                    */
+        }, 1000);
+      });
+
+      /* =====================================
+           ERROR FUNCTION
+        ===================================== */
+
+      function showError(message) {
+        errorMessage.textContent = message;
+
+        errorMessage.style.display = "block";
+      }
+
+      /* =====================================
+           CLEAR ERROR
+        ===================================== */
+
+      [firstName, lastName, email, password, confirmPassword].forEach(
+        function (input) {
+          input.addEventListener("input", function () {
+            errorMessage.style.display = "none";
+          });
+        },
+      );
+
+      /* =====================================
+           INTERACTIVE BACKGROUND
+        ===================================== */
+
+      registerPage.addEventListener("mousemove", function (event) {
+        if (window.innerWidth <= 768) {
+          return;
+        }
+
+        const x = (event.clientX / window.innerWidth - 0.5) * 8;
+
+        const y = (event.clientY / window.innerHeight - 0.5) * 8;
+
+        registerPage.style.backgroundPosition = `calc(50% + ${x}px)
+                     calc(50% + ${y}px)`;
+      });
+
+      /* Reset background */
+
+      registerPage.addEventListener("mouseleave", function () {
+        registerPage.style.backgroundPosition = "center";
+      });
+    </script>
+  </body>
+</html>
+```

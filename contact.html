@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contact Us | EcoLife</title>
+
+    <link rel="stylesheet" href="contact.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+      <a href="index.html" class="logo"> Eco<span>Life</span> </a>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+
+          <li class="dropdown">
+            <a href="products.html">
+              Products
+              <span>▼</span>
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a href="products.html">All Products</a>
+              </li>
+
+              <li>
+                <a href="kitchen.html">Kitchen & Dining</a>
+              </li>
+
+              <li>
+                <a href="personal-care.html">Personal Care</a>
+              </li>
+
+              <li>
+                <a href="reusable-bags.html">Reusable Bags</a>
+              </li>
+
+              <li>
+                <a href="eco-accessories.html">Eco Accessories</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="about.html">About Us</a>
+          </li>
+
+          <li>
+            <a href="zero-waste-guide.html"> Zero Waste Guide </a>
+          </li>
+
+          <li>
+            <a href="contact.html" class="active"> Contact </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="nav-login"> Login </a>
+
+        <button class="nav-icon">
+          <a href="cart.html" class="nav-icon"> 🛒 </a>
+        </button>
+
+        <!-- <span class="cart-count" id="cartCount">0</span> -->
+
+        <button class="mobile-menu" id="mobileMenu">☰</button>
+      </div>
+    </header>
+
+    <!-- ================= CONTACT HERO ================= -->
+
+    <section class="contact-hero">
+      <div class="contact-hero-overlay"></div>
+
+      <div class="contact-hero-content">
+        <span> WE'D LOVE TO HEAR FROM YOU </span>
+
+        <h1>
+          Let's Make The
+          <strong>Planet Greener</strong>
+          Together
+        </h1>
+
+        <p>
+          Have a question about our products, your order, or sustainable living?
+          Our EcoLife team is here to help.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT INFORMATION ================= -->
+
+    <section class="contact-section">
+      <div class="contact-container">
+        <!-- LEFT SIDE -->
+
+        <div class="contact-info">
+          <span class="section-label"> GET IN TOUCH </span>
+
+          <h2>
+            We'd Love To
+            <span>Hear From You</span>
+          </h2>
+
+          <p>
+            Whether you have a question about our products or want to learn more
+            about sustainable living, send us a message.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-icon">📍</div>
+
+              <div>
+                <h4>Our Location</h4>
+
+                <p>
+                  EcoLife Studio<br />
+                  Karachi, Pakistan
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-icon">📧</div>
+
+              <div>
+                <h4>Email Us</h4>
+
+                <p>hello@ecolife.com</p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-icon">📞</div>
+
+              <div>
+                <h4>Call Us</h4>
+
+                <p>+92 300 1234567</p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-icon">🕐</div>
+
+              <div>
+                <h4>Working Hours</h4>
+
+                <p>
+                  Monday – Saturday<br />
+                  9:00 AM – 6:00 PM
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT CONTACT FORM -->
+
+        <div class="contact-form-card">
+          <h3>Send Us A Message</h3>
+
+          <p>Fill in the form and we'll get back to you.</p>
+
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="input-group">
+                <label> Your Name </label>
+
+                <input
+                  type="text"
+                  id="contactName"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label> Email Address </label>
+
+                <input
+                  type="email"
+                  id="contactEmail"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label> Subject </label>
+
+              <input type="text" placeholder="How can we help?" required />
+            </div>
+
+            <div class="input-group">
+              <label> Message </label>
+
+              <textarea
+                id="contactMessage"
+                rows="6"
+                placeholder="Write your message..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="contact-submit">Send Message →</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ACCOUNT SECTION ================= -->
+
+    <section class="account-section">
+      <div class="account-container">
+        <div class="account-image">
+          <img
+            src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=85"
+            alt="Eco friendly lifestyle"
+          />
+
+          <div class="account-image-text">
+            <span> JOIN ECOLIFE </span>
+
+            <h2>Live Green. Shop Better.</h2>
+
+            <p>
+              Create your EcoLife account and make sustainable shopping easier.
+            </p>
+          </div>
+        </div>
+
+        <div class="account-content">
+          <span class="section-label"> YOUR ECOLIFE ACCOUNT </span>
+
+          <h2>
+            Shop Sustainably,
+            <span>Your Way</span>
+          </h2>
+
+          <p>
+            Login if you already have an account, or create a new EcoLife
+            account to get started.
+          </p>
+
+          <div class="account-cards">
+            <!-- LOGIN -->
+
+            <div class="account-card">
+              <div class="account-card-icon">🔐</div>
+
+              <div>
+                <h3>Already a Member?</h3>
+
+                <p>Login to access your account, orders and wishlist.</p>
+
+                <a href="login.html" class="account-btn"> Login → </a>
+              </div>
+            </div>
+
+            <!-- REGISTER -->
+
+            <div class="account-card register-card">
+              <div class="account-card-icon">🌱</div>
+
+              <div>
+                <h3>New to EcoLife?</h3>
+
+                <p>Create your account and start your sustainable journey.</p>
+
+                <a href="register.html" class="account-btn">
+                  Create Account →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NEWSLETTER ================= -->
+
+    <section class="newsletter">
+      <div>
+        <span> STAY CONNECTED </span>
+
+        <h2>Get Sustainable Ideas In Your Inbox</h2>
+
+        <p>Subscribe for zero-waste tips, new products and EcoLife updates.</p>
+      </div>
+
+      <form id="newsletterForm">
+        <input type="email" placeholder="Your email address" required />
+
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-about">
+          <a href="index.html" class="logo"> Eco<span>Life</span> </a>
+
+          <p>
+            Making sustainable living beautiful, practical and accessible for
+            everyone.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Shop</h4>
+
+          <a href="products.html"> All Products </a>
+
+          <a href="kitchen.html"> Kitchen & Dining </a>
+
+          <a href="personal-care.html"> Personal Care </a>
+
+          <a href="reusable-bags.html"> Reusable Bags </a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore</h4>
+
+          <a href="about.html"> About Us </a>
+
+          <a href="accessories.html"> Eco Accessories </a>
+
+          <a href="zero-waste-guide.html"> Zero Waste Guide </a>
+
+          <a href="contact.html"> Contact </a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Account</h4>
+
+          <a href="login.html"> Login </a>
+
+          <a href="register.html"> Register </a>
+
+          <a href="#"> Wishlist </a>
+
+          <a href="#"> My Orders </a>
+        </div>
+      </div>
+
+      <div class="copyright">© 2026 EcoLife | All Rights Reserved 🌿</div>
+    </footer>
+
+    <script src="contact.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1568 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Products | EcoLife</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: #f7faf5;
+        color: #24352a;
+      }
+
+      /* ================= NAVBAR ================= */
+
+      .navbar {
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 7%;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: #2d6a4f;
+      }
+
+      .logo span {
+        color: #95b85c;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #26382c;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover,
+      .nav-links .active {
+        color: #4f8a65;
+      }
+
+      .nav-icons {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .nav-icons button {
+        border: none;
+        background: transparent;
+        font-size: 22px;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 19px;
+        height: 19px;
+        background: #163a2a;
+        color: white;
+        font-size: 11px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .cart-link {
+        position: relative;
+        text-decoration: none;
+        color: inherit;
+        font-size: 22px;
+        display: inline-flex;
+      }
+
+      .cart-link .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+      }
+
+      .menu-btn {
+        display: none;
+      }
+      /* ==============================
+   PRODUCTS DROPDOWN
+================================ */
+
+      .dropdown {
+        position: relative;
+      }
+
+      /* Small arrow */
+
+      .arrow {
+        font-size: 10px;
+        margin-left: 5px;
+        transition: 0.3s;
+      }
+
+      /* Dropdown box */
+
+      .dropdown-menu {
+        position: absolute;
+        top: 38px;
+        left: -20px;
+
+        width: 220px;
+
+        background: #ffffff;
+
+        list-style: none;
+
+        padding: 10px 0;
+
+        border-radius: 12px;
+
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(10px);
+
+        transition: all 0.3s ease;
+
+        z-index: 999;
+      }
+
+      /* Dropdown links */
+
+      .dropdown-menu li {
+        width: 100%;
+      }
+
+      .dropdown-menu li a {
+        display: block;
+
+        padding: 12px 20px;
+
+        color: #2d4033;
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        transition: all 0.3s ease;
+      }
+
+      /* Hover */
+
+      .dropdown-menu li a:hover {
+        background: #edf6e9;
+
+        color: #3f7656;
+
+        padding-left: 27px;
+      }
+
+      /* Show dropdown */
+
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+
+        visibility: visible;
+
+        transform: translateY(0);
+      }
+
+      /* Rotate arrow */
+
+      .dropdown:hover .arrow {
+        transform: rotate(180deg);
+      }
+
+      /* ==============================
+   DROPDOWN MOBILE
+================================ */
+
+      @media (max-width: 800px) {
+        .dropdown-menu {
+          position: static;
+
+          width: 100%;
+
+          display: none;
+
+          opacity: 1;
+
+          visibility: visible;
+
+          transform: none;
+
+          box-shadow: none;
+
+          background: #f5f9f3;
+
+          border-radius: 8px;
+
+          margin-top: 10px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+          display: block;
+        }
+
+        .dropdown-menu li a {
+          padding: 10px 25px;
+        }
+      }
+
+      /* ================= HERO ================= */
+
+      .products-hero {
+        min-height: 350px;
+        background:
+          linear-gradient(rgba(29, 67, 47, 0.65), rgba(29, 67, 47, 0.65)),
+          url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=80");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 50px 20px;
+      }
+
+      .hero-content {
+        max-width: 750px;
+      }
+
+      .hero-content span {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #d8edb8;
+      }
+
+      .hero-content h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 55px;
+        margin: 15px 0;
+      }
+
+      .hero-content p {
+        font-size: 17px;
+        line-height: 1.7;
+        color: #eef7e9;
+      }
+
+      /* ================= FILTER AREA ================= */
+
+      .shop-section {
+        padding: 70px 7%;
+      }
+
+      .shop-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .shop-heading h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 36px;
+      }
+
+      .shop-heading p {
+        color: #718075;
+        margin-top: 8px;
+      }
+
+      .search-box {
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 1px solid #dce6dc;
+        border-radius: 30px;
+        padding: 5px 15px;
+        width: 280px;
+      }
+
+      .search-box input {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      .search-box button {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      /* ================= CATEGORY BUTTONS ================= */
+
+      .categories {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 45px;
+      }
+
+      .category-btn {
+        border: 1px solid #b9ceb9;
+        background: white;
+        padding: 11px 22px;
+        border-radius: 25px;
+        cursor: pointer;
+        color: #36563e;
+        transition: 0.3s;
+        font-weight: 500;
+      }
+
+      .category-btn:hover,
+      .category-btn.active {
+        background: #3f7656;
+        color: white;
+        border-color: #3f7656;
+        transform: translateY(-2px);
+      }
+
+      /* ================= PRODUCTS ================= */
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 8px 25px rgba(43, 70, 51, 0.08);
+        transition: 0.4s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(43, 70, 51, 0.15);
+      }
+
+      .product-image {
+        height: 270px;
+        position: relative;
+        overflow: hidden;
+        background: #edf4eb;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.5s;
+      }
+
+      .product-card:hover .product-image img {
+        transform: scale(1.08);
+      }
+
+      .badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: #e8f3d8;
+        color: #426331;
+        padding: 7px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .wishlist {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        background: white;
+        cursor: pointer;
+        font-size: 19px;
+        transition: 0.3s;
+      }
+
+      .wishlist:hover {
+        background: #e76f51;
+        color: white;
+      }
+
+      .product-info {
+        padding: 20px;
+      }
+
+      .product-category {
+        color: #83a65a;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .product-info h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 21px;
+        margin: 7px 0;
+      }
+
+      .rating {
+        color: #e6a532;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .price {
+        font-size: 19px;
+        font-weight: 700;
+        color: #2f694b;
+      }
+
+      .old-price {
+        color: #9ba59d;
+        font-size: 14px;
+        text-decoration: line-through;
+        margin-left: 5px;
+      }
+
+      .add-cart {
+        width: 100%;
+        margin-top: 15px;
+        padding: 12px;
+        border: none;
+        border-radius: 9px;
+        background: #315f45;
+        color: white;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .add-cart:hover {
+        background: #234834;
+      }
+
+      /* ================= QUICK VIEW ================= */
+
+      .quick-view {
+        position: absolute;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-card:hover .quick-view {
+        bottom: 15px;
+      }
+
+      /* ================= MODAL ================= */
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        padding: 20px;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: white;
+        max-width: 700px;
+        width: 100%;
+        border-radius: 20px;
+        padding: 30px;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .modal-content img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+
+      .modal-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .modal-info h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        margin: 10px 0;
+      }
+
+      .modal-info p {
+        color: #6c796f;
+        line-height: 1.7;
+        margin: 15px 0;
+      }
+
+      .close-modal {
+        position: absolute;
+        right: 18px;
+        top: 15px;
+        border: none;
+        background: #edf3ed;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      /* ================= NEWSLETTER ================= */
+
+      .newsletter {
+        margin-top: 30px;
+        background: #315f45;
+        color: white;
+        padding: 60px 7%;
+        text-align: center;
+      }
+
+      .newsletter h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 35px;
+      }
+
+      .newsletter p {
+        margin: 10px 0 25px;
+        color: #dcebdd;
+      }
+
+      .newsletter-form {
+        display: flex;
+        justify-content: center;
+        max-width: 500px;
+        margin: auto;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 14px 18px;
+        border: none;
+        outline: none;
+        border-radius: 8px 0 0 8px;
+      }
+
+      .newsletter-form button {
+        padding: 14px 22px;
+        border: none;
+        background: #a9c96d;
+        color: #203625;
+        font-weight: 700;
+        border-radius: 0 8px 8px 0;
+        cursor: pointer;
+      }
+
+      /* ================= FOOTER ================= */
+
+      footer {
+        background: #1d3024;
+        color: white;
+        text-align: center;
+        padding: 25px;
+      }
+
+      footer p {
+        color: #b9c8bd;
+        font-size: 14px;
+      }
+
+      /* ================= RESPONSIVE ================= */
+
+      @media (max-width: 1100px) {
+        .product-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 800px) {
+        .nav-links {
+          position: absolute;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background: white;
+          flex-direction: column;
+          align-items: center;
+          padding: 25px;
+          display: none;
+        }
+
+        .nav-links.show {
+          display: flex;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+
+        .product-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .modal-content {
+          grid-template-columns: 1fr;
+          max-height: 90vh;
+          overflow-y: auto;
+        }
+
+        .modal-content img {
+          height: 250px;
+        }
+      }
+
+      @media (max-width: 550px) {
+        .navbar {
+          padding: 15px 5%;
+        }
+
+        .logo {
+          font-size: 23px;
+        }
+
+        .hero-content h1 {
+          font-size: 40px;
+        }
+
+        .shop-section {
+          padding: 50px 5%;
+        }
+
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .search-box {
+          width: 100%;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .newsletter-form input,
+        .newsletter-form button {
+          border-radius: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+      <div class="logo">Eco<span>Life</span></div>
+
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+
+        <!-- PRODUCTS DROPDOWN -->
+        <li class="dropdown">
+          <a href="products.html" class="active">
+            Products <span class="arrow">▼</span>
+          </a>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a href="products.html"> All Products </a>
+            </li>
+
+            <li>
+              <a href="kitchen.html"> Kitchen & Dining </a>
+            </li>
+
+            <li>
+              <a href="personal-care.html"> Personal Care </a>
+            </li>
+
+            <li>
+              <a href="reusable-bags.html"> Reusable Bags </a>
+            </li>
+
+            <li>
+              <a href="eco-accessories.html"> Eco Accessories </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="about.html"> About Us </a>
+        </li>
+
+        <li>
+          <a href="zero-waste-guide.html"> Zero Waste Guide </a>
+        </li>
+
+        <li>
+          <a href="contact.html"> Contact </a>
+        </li>
+      </ul>
+
+      <div class="nav-icons">
+        <button title="Wishlist">♡</button>
+
+        <!-- <a href="cart.html"
+          ><button title="Shopping Cart">
+            🛒
+            <span class="cart-count" id="cartCount">0</span>
+          </button></a
+        > -->
+        <!-- <button> -->
+        <a href="cart.html" class="cart-link" title="Shopping Cart">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+
+        <!-- </button> -->
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="products-hero">
+      <div class="hero-content">
+        <span>Shop Sustainably</span>
+
+        <h1>Thoughtful Products for a Greener Life</h1>
+
+        <p>
+          Discover beautiful, reusable and eco-friendly products designed to
+          help you live sustainably without compromising on style.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= SHOP ================= -->
+
+    <section class="shop-section">
+      <div class="shop-top">
+        <div class="shop-heading">
+          <h2>Explore Our Products</h2>
+          <p>Better choices for you and the planet.</p>
+        </div>
+
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products..."
+            onkeyup="searchProducts()"
+          />
+
+          <button>🔍</button>
+        </div>
+      </div>
+
+      <!-- CATEGORY FILTER -->
+
+      <div class="categories">
+        <button
+          class="category-btn active"
+          onclick="filterProducts('all', this)"
+        >
+          All
+        </button>
+
+        <button class="category-btn" onclick="filterProducts('kitchen', this)">
+          Kitchen & Dining
+        </button>
+
+        <button class="category-btn" onclick="filterProducts('personal', this)">
+          Personal Care
+        </button>
+
+        <button class="category-btn" onclick="filterProducts('bags', this)">
+          Reusable Bags
+        </button>
+
+        <button
+          class="category-btn"
+          onclick="filterProducts('accessories', this)"
+        >
+          Accessories
+        </button>
+      </div>
+
+      <!-- PRODUCT GRID -->
+
+      <div class="product-grid" id="productGrid">
+        <!-- PRODUCT 1 -->
+
+        <div
+          class="product-card"
+          data-category="kitchen"
+          data-name="Bamboo Kitchen Set"
+        >
+          <div class="product-image">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSomLB9sVwXwfGFzxtvjwDvTm2f9cpdFJCWsunm_9WrMt__V_0xgeMqRtx&s=10"
+            />
+
+            <span class="badge">Bestseller</span>
+
+            <button class="wishlist" onclick="addWishlist(this)">♡</button>
+
+            <button
+              class="quick-view"
+              onclick="
+                quickView(
+                  'Bamboo Kitchen Set',
+                  '$29.99',
+                  'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=700&q=80',
+                )
+              "
+            >
+              Quick View
+            </button>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category"> Kitchen </span>
+
+            <h3>Bamboo Kitchen Set</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <span class="price"> $29.99 </span>
+
+            <!-- <button class="add-cart" onclick="addToCart()">Add to Cart</button> -->
+            <button class="add-cart" onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+
+        <div
+          class="product-card"
+          data-category="bags"
+          data-name="Organic Cotton Tote"
+        >
+          <div class="product-image">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaW3b7Y8veRw_ihCogLoQ39n4tGURJJlxKHTMzv2SRzlAndQvTXF6mUmB1&s=10"
+            />
+
+            <span class="badge">Eco Pick</span>
+
+            <button class="wishlist" onclick="addWishlist(this)">♡</button>
+
+            <button
+              class="quick-view"
+              onclick="
+                quickView(
+                  'Organic Cotton Tote',
+                  '$18.99',
+                  'https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=700&q=80',
+                )
+              "
+            >
+              Quick View
+            </button>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category"> Reusable Bags </span>
+
+            <h3>Organic Cotton Tote</h3>
+
+            <div class="rating">★★★★☆</div>
+
+            <span class="price"> $18.99 </span>
+
+            <!-- <button class="add-cart" onclick="addToCart()">Add to Cart</button> -->
+            <button class="add-cart" onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+
+        <div
+          class="product-card"
+          data-category="personal"
+          data-name="Natural Soap Bar"
+        >
+          <div class="product-image">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMurMec1XwAQ7xnhg2Wn2bx25ZC638cXq6hvrTr0lVJsZhNY4HVES16XUq&s=10"
+            />
+
+            <span class="badge">Natural</span>
+
+            <button class="wishlist" onclick="addWishlist(this)">♡</button>
+
+            <button
+              class="quick-view"
+              onclick="
+                quickView(
+                  'Natural Soap Bar',
+                  '$8.99',
+                  'https://images.unsplash.com/photo-1607006483225-8c9c6b1d7c76?auto=format&fit=crop&w=700&q=80',
+                )
+              "
+            >
+              Quick View
+            </button>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category"> Personal Care </span>
+
+            <h3>Natural Soap Bar</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <span class="price"> $8.99 </span>
+
+            <!-- <button class="add-cart" onclick="addToCart()">Add to Cart</button> -->
+            <button class="add-cart" onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 4 -->
+
+        <div
+          class="product-card"
+          data-category="accessories"
+          data-name="Bamboo Sunglasses"
+        >
+          <div class="product-image">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhh6M7vMY-UPMPjHPnTiyXpgyWZxD1FB0Wv7mALk0bzTVbi-reFHn0RVQ_&s=10"
+            />
+
+            <span class="badge">New</span>
+
+            <button class="wishlist" onclick="addWishlist(this)">♡</button>
+
+            <button
+              class="quick-view"
+              onclick="
+                quickView(
+                  'Bamboo Sunglasses',
+                  '$34.99',
+                  'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80',
+                )
+              "
+            >
+              Quick View
+            </button>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category"> Accessories </span>
+
+            <h3>Bamboo Sunglasses</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <span class="price"> $34.99 </span>
+
+            <!-- <button class="add-cart" onclick="addToCart()">Add to Cart</button> -->
+            <button class="add-cart" onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 5 -->
+
+        <div
+          class="product-card"
+          data-category="kitchen"
+          data-name="Reusable Coffee Cup"
+        >
+          <div class="product-image">
+            <img
+              src="https://img.drz.lazcdn.com/static/pk/p/766780139a58acb81fb09ae5f7973216.jpg_720x720q80.jpg"
+            />
+
+            <button class="wishlist" onclick="addWishlist(this)">♡</button>
+
+            <button
+              class="quick-view"
+              onclick="
+                quickView(
+                  'Reusable Coffee Cup',
+                  '$15.99',
+                  'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=700&q=80',
+                )
+              "
+            >
+              Quick View
+            </button>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category"> Kitchen </span>
+
+            <h3>Reusable Coffee Cup</h3>
+
+            <div class="rating">★★★★☆</div>
+
+            <span class="price"> $15.99 </span>
+
+            <!-- <button class="add-cart" onclick="addToCart()">Add to Cart</button> -->
+            <button class="add-cart" onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 6 -->
+
+        <div
+          class="product-card"
+          data-category="bags"
+          data-name="Jute Shopping Bag"
+        >
+          <div class="product-image">
+            <img
+              src="https://trendyhome.pk/cdn/shop/files/52_9fcca06c-f4ca-413d-9d59-87c3cba7cabe.jpg?v=1737126008"
+            />
+
+            <span class="badge">Popular</span>
+
+            <button class="wishlist" onclick="addWishlist(this)">♡</button>
+
+            <button
+              class="quick-view"
+              onclick="
+                quickView(
+                  'Jute Shopping Bag',
+                  '$12.99',
+                  'https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?auto=format&fit=crop&w=700&q=80',
+                )
+              "
+            >
+              Quick View
+            </button>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category"> Reusable Bags </span>
+
+            <h3>Jute Shopping Bag</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <span class="price"> $12.99 </span>
+
+            <!-- <button class="add-cart" onclick="addToCart()">Add to Cart</button> -->
+            <button class="add-cart" onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 7 -->
+
+        <div
+          class="product-card"
+          data-category="personal"
+          data-name="Bamboo Toothbrush"
+        >
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=700&q=80"
+            />
+
+            <span class="badge">Zero Waste</span>
+
+            <button class="wishlist" onclick="addWishlist(this)">♡</button>
+
+            <button
+              class="quick-view"
+              onclick="
+                quickView(
+                  'Bamboo Toothbrush',
+                  '$6.99',
+                  'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=700&q=80',
+                )
+              "
+            >
+              Quick View
+            </button>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category"> Personal Care </span>
+
+            <h3>Bamboo Toothbrush</h3>
+
+            <div class="rating">★★★★★</div>
+
+            <span class="price"> $6.99 </span>
+
+            <!-- <button class="add-cart" onclick="addToCart()">Add to Cart</button> -->
+            <button class="add-cart" onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUCT 8 -->
+
+        <div
+          class="product-card"
+          data-category="accessories"
+          data-name="Eco Bracelet"
+        >
+          <div class="product-image">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTasKZ-I5HyP1fdsjUzhNrvaSb3cckDUF1i0q-1137irOlfRjonZyd0-Qhr&s=10"
+            />
+
+            <span class="badge">Handmade</span>
+
+            <button class="wishlist" onclick="addWishlist(this)">♡</button>
+
+            <button
+              class="quick-view"
+              onclick="
+                quickView(
+                  'Eco Bracelet',
+                  '$11.99',
+                  'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=700&q=80',
+                )
+              "
+            >
+              Quick View
+            </button>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category"> Accessories </span>
+
+            <h3>Eco Bracelet</h3>
+
+            <div class="rating">★★★★☆</div>
+
+            <span class="price"> $11.99 </span>
+
+            <!-- <button class="add-cart" onclick="addToCart()">Add to Cart</button> -->
+            <button class="add-cart" onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NEWSLETTER ================= -->
+
+    <section class="newsletter">
+      <h2>Join the Green Movement</h2>
+
+      <p>
+        Get sustainable living tips, new product launches and exclusive offers.
+      </p>
+
+      <form class="newsletter-form" onsubmit="subscribe(event)">
+        <input type="email" placeholder="Enter your email" required />
+
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+      <p>© 2026 EcoLife. Made for a greener tomorrow 🌱</p>
+    </footer>
+
+    <!-- ================= QUICK VIEW MODAL ================= -->
+
+    <div class="modal" id="productModal">
+      <div class="modal-content">
+        <button class="close-modal" onclick="closeModal()">×</button>
+
+        <img id="modalImage" src="" alt="Product" />
+
+        <div class="modal-info">
+          <span class="product-category"> EcoLife Product </span>
+
+          <h2 id="modalTitle">Product</h2>
+
+          <div class="rating">★★★★★</div>
+
+          <span class="price" id="modalPrice"> $0 </span>
+
+          <p>
+            A thoughtfully designed sustainable product made for everyday
+            living. Choose reusable alternatives and help reduce unnecessary
+            waste.
+          </p>
+
+          <!-- <button
+            class="add-cart"
+            onclick="
+              addToCart();
+              closeModal();
+            "
+          >
+            Add to Cart
+          </button> -->
+          <button class="add-cart" onclick="addModalToCart()">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+      /* =========================================
+     MOBILE MENU
+  ========================================= */
+
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("show");
+      }
+
+      /* =========================================
+     CART
+  ========================================= */
+
+      let cart = JSON.parse(localStorage.getItem("ecoLifeCart")) || [];
+
+      // Clean old/invalid cart data
+      cart = cart
+        .filter(function (item) {
+          return item && item.name;
+        })
+        .map(function (item) {
+          return {
+            name: item.name,
+            price: Number(item.price) || 0,
+            category: item.category || "Eco Product",
+            image: item.image || "",
+            quantity: Math.max(1, Number(item.quantity) || 1),
+          };
+        });
+
+      saveCart();
+
+      function saveCart() {
+        localStorage.setItem("ecoLifeCart", JSON.stringify(cart));
+      }
+
+      /* =========================================
+     CART COUNT
+  ========================================= */
+
+      function updateCartCount() {
+        const cartCount = document.getElementById("cartCount");
+
+        if (!cartCount) return;
+
+        const totalItems = cart.reduce(function (total, item) {
+          return total + Number(item.quantity || 0);
+        }, 0);
+
+        cartCount.textContent = totalItems;
+      }
+
+      /* =========================================
+     ADD PRODUCT TO CART
+  ========================================= */
+
+      function addToCart(button) {
+        const productCard = button.closest(".product-card");
+
+        if (!productCard) return;
+
+        const name = productCard.dataset.name;
+        const category = productCard.dataset.category || "Eco Product";
+
+        const priceElement = productCard.querySelector(".price");
+
+        if (!priceElement) return;
+
+        const price = parseFloat(
+          priceElement.textContent.replace(/[^0-9.]/g, ""),
+        );
+
+        const imageElement = productCard.querySelector(".product-image img");
+
+        const image = imageElement ? imageElement.src : "";
+
+        const existingProduct = cart.find(function (item) {
+          return item.name === name;
+        });
+
+        if (existingProduct) {
+          existingProduct.quantity = Number(existingProduct.quantity || 0) + 1;
+        } else {
+          cart.push({
+            name: name,
+            price: price,
+            category: category,
+            image: image,
+            quantity: 1,
+          });
+        }
+
+        saveCart();
+        updateCartCount();
+
+        const originalText = button.textContent;
+
+        button.textContent = "✓ Added to Cart";
+        button.style.background = "#4f9860";
+
+        setTimeout(function () {
+          button.textContent = originalText;
+          button.style.background = "";
+        }, 1200);
+      }
+
+      /* =========================================
+     WISHLIST
+  ========================================= */
+
+      function addWishlist(button) {
+        if (button.textContent.trim() === "♡") {
+          button.textContent = "♥";
+          button.style.color = "#e76f51";
+        } else {
+          button.textContent = "♡";
+          button.style.color = "#24352a";
+        }
+      }
+
+      /* =========================================
+     CATEGORY FILTER
+  ========================================= */
+
+      let selectedCategory = "all";
+
+      function filterProducts(category, button) {
+        selectedCategory = category;
+
+        document.querySelectorAll(".category-btn").forEach(function (btn) {
+          btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        applyFilters();
+      }
+
+      /* =========================================
+     SEARCH + CATEGORY FILTER
+  ========================================= */
+
+      function searchProducts() {
+        applyFilters();
+      }
+
+      function applyFilters() {
+        const searchInput = document.getElementById("searchInput");
+
+        const search = searchInput
+          ? searchInput.value.toLowerCase().trim()
+          : "";
+
+        const products = document.querySelectorAll(".product-card");
+
+        products.forEach(function (product) {
+          const name = (product.dataset.name || "").toLowerCase();
+
+          const category = product.dataset.category || "";
+
+          const matchesSearch = name.includes(search);
+
+          const matchesCategory =
+            selectedCategory === "all" || category === selectedCategory;
+
+          if (matchesSearch && matchesCategory) {
+            product.style.display = "";
+          } else {
+            product.style.display = "none";
+          }
+        });
+      }
+
+      /* =========================================
+     QUICK VIEW
+  ========================================= */
+
+      let selectedProduct = null;
+
+      function quickView(title, price, image) {
+        selectedProduct = {
+          name: title,
+          price: parseFloat(String(price).replace(/[^0-9.]/g, "")),
+          image: image,
+        };
+
+        document.getElementById("modalTitle").textContent = title;
+
+        document.getElementById("modalPrice").textContent = price;
+
+        document.getElementById("modalImage").src = image;
+
+        document.getElementById("productModal").classList.add("active");
+      }
+
+      /* =========================================
+     ADD QUICK VIEW PRODUCT TO CART
+  ========================================= */
+
+      function addModalToCart() {
+        if (!selectedProduct) return;
+
+        const existingProduct = cart.find(function (item) {
+          return item.name === selectedProduct.name;
+        });
+
+        if (existingProduct) {
+          existingProduct.quantity = Number(existingProduct.quantity || 0) + 1;
+        } else {
+          cart.push({
+            name: selectedProduct.name,
+            price: selectedProduct.price,
+            category: "Eco Product",
+            image: selectedProduct.image,
+            quantity: 1,
+          });
+        }
+
+        saveCart();
+        updateCartCount();
+
+        alert(selectedProduct.name + " added to your cart! 🛒");
+
+        closeModal();
+      }
+
+      /* =========================================
+     CLOSE MODAL
+  ========================================= */
+
+      function closeModal() {
+        document.getElementById("productModal").classList.remove("active");
+
+        selectedProduct = null;
+      }
+
+      /* Close modal when clicking outside */
+
+      document
+        .getElementById("productModal")
+        .addEventListener("click", function (event) {
+          if (event.target === this) {
+            closeModal();
+          }
+        });
+
+      /* Close modal with Escape */
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      /* =========================================
+     NEWSLETTER
+  ========================================= */
+
+      function subscribe(event) {
+        event.preventDefault();
+
+        alert("Thank you for joining the EcoLife community! 🌱");
+
+        event.target.reset();
+      }
+
+      /* =========================================
+     INITIALIZE
+  ========================================= */
+
+      updateCartCount();
+    </script>
+  </body>
+</html>

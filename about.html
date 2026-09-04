@@ -1,0 +1,1817 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>About Us | EcoLife</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =========================================
+           RESET
+        ========================================= */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: #faf9f3;
+        color: #29382f;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      /* =========================================
+           NAVBAR
+        ========================================= */
+
+      .navbar {
+        width: 100%;
+        background: #ffffff;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 18px 7%;
+
+        position: sticky;
+        top: 0;
+
+        z-index: 1000;
+
+        box-shadow: 0 3px 18px rgba(0, 0, 0, 0.06);
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        font-weight: 700;
+        color: #315d43;
+      }
+
+      .logo span {
+        color: #c29c52;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #29382f;
+        font-size: 15px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover,
+      .nav-links .active {
+        color: #63875f;
+      }
+
+      /* =========================================
+           DROPDOWN
+        ========================================= */
+
+      .dropdown {
+        position: relative;
+      }
+
+      .arrow {
+        font-size: 9px;
+        margin-left: 5px;
+        transition: 0.3s;
+      }
+
+      .dropdown-menu {
+        position: absolute;
+
+        top: 35px;
+        left: -20px;
+
+        width: 220px;
+
+        background: #ffffff;
+
+        list-style: none;
+
+        padding: 10px 0;
+
+        border-radius: 12px;
+
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(10px);
+
+        transition: 0.3s;
+      }
+
+      .dropdown-menu li a {
+        display: block;
+
+        padding: 12px 20px;
+
+        font-size: 14px;
+      }
+
+      .dropdown-menu li a:hover {
+        background: #f0f5e9;
+        padding-left: 27px;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown:hover .arrow {
+        transform: rotate(180deg);
+      }
+
+      /* =========================================
+           NAV ICONS
+        ========================================= */
+
+      .nav-icons {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .nav-icons button {
+        background: transparent;
+        border: none;
+
+        font-size: 21px;
+
+        cursor: pointer;
+
+        position: relative;
+      }
+
+      .cart-count {
+        position: absolute;
+
+        top: -8px;
+        right: -9px;
+
+        width: 19px;
+        height: 19px;
+
+        background: #163a2a;
+
+        color: white;
+
+        border-radius: 50%;
+
+        font-size: 11px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .menu-btn {
+        display: none;
+      }
+
+      /* =========================================
+           HERO
+        ========================================= */
+
+      .about-hero {
+        min-height: 560px;
+
+        background:
+          linear-gradient(rgba(37, 67, 47, 0.67), rgba(37, 67, 47, 0.67)),
+          url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1800&q=85");
+
+        background-size: cover;
+        background-position: center;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        color: white;
+
+        padding: 60px 20px;
+      }
+
+      .hero-content {
+        max-width: 850px;
+      }
+
+      .hero-tag {
+        display: inline-block;
+
+        padding: 9px 20px;
+
+        border: 1px solid rgba(255, 255, 255, 0.5);
+
+        background: rgba(255, 255, 255, 0.12);
+
+        border-radius: 30px;
+
+        color: #ead59b;
+
+        font-size: 13px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 2px;
+      }
+
+      .hero-content h1 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 65px;
+
+        line-height: 1.1;
+
+        margin: 20px 0;
+      }
+
+      .hero-content h1 span {
+        color: #e0c477;
+      }
+
+      .hero-content p {
+        max-width: 700px;
+
+        margin: auto;
+
+        color: #eef3ec;
+
+        line-height: 1.8;
+
+        font-size: 17px;
+      }
+
+      .hero-buttons {
+        margin-top: 30px;
+
+        display: flex;
+
+        justify-content: center;
+
+        gap: 15px;
+
+        flex-wrap: wrap;
+      }
+
+      .hero-btn {
+        padding: 14px 30px;
+
+        background: #d7bc73;
+
+        color: #29382f;
+
+        border-radius: 30px;
+
+        font-weight: 700;
+
+        transition: 0.3s;
+      }
+
+      .hero-btn:hover {
+        transform: translateY(-4px);
+
+        background: #ebd590;
+      }
+
+      .hero-btn.outline {
+        background: transparent;
+
+        border: 1px solid rgba(255, 255, 255, 0.7);
+
+        color: white;
+      }
+
+      .hero-btn.outline:hover {
+        background: white;
+        color: #315d43;
+      }
+
+      /* =========================================
+           COMMON SECTION
+        ========================================= */
+
+      .section {
+        padding: 90px 7%;
+      }
+
+      .section-heading {
+        text-align: center;
+
+        max-width: 760px;
+
+        margin: 0 auto 55px;
+      }
+
+      .section-label {
+        color: #9b7b3c;
+
+        font-size: 13px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 2px;
+
+        font-weight: 700;
+      }
+
+      .section-heading h2 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 44px;
+
+        color: #2d4b36;
+
+        margin: 12px 0;
+      }
+
+      .section-heading p {
+        color: #737d75;
+
+        line-height: 1.8;
+      }
+
+      /* =========================================
+           STORY SECTION
+        ========================================= */
+
+      .story-section {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 70px;
+
+        align-items: center;
+      }
+
+      .story-image {
+        position: relative;
+      }
+
+      .story-image img {
+        width: 100%;
+
+        height: 520px;
+
+        object-fit: cover;
+
+        border-radius: 25px;
+
+        box-shadow: 0 20px 45px rgba(45, 75, 54, 0.13);
+      }
+
+      .experience-box {
+        position: absolute;
+
+        right: -25px;
+        bottom: 30px;
+
+        width: 175px;
+
+        padding: 25px;
+
+        background: #dce8d4;
+
+        border-radius: 18px;
+
+        text-align: center;
+
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .experience-box strong {
+        display: block;
+
+        font-family: "Playfair Display", serif;
+
+        font-size: 38px;
+
+        color: #3c6549;
+      }
+
+      .experience-box span {
+        color: #59695d;
+
+        font-size: 13px;
+      }
+
+      .story-content .label {
+        color: #9b7b3c;
+
+        font-size: 13px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 2px;
+
+        font-weight: 700;
+      }
+
+      .story-content h2 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 45px;
+
+        color: #2d4b36;
+
+        margin: 12px 0 20px;
+      }
+
+      .story-content p {
+        color: #707b73;
+
+        line-height: 1.85;
+
+        margin-bottom: 18px;
+      }
+
+      .story-list {
+        list-style: none;
+
+        margin-top: 25px;
+      }
+
+      .story-list li {
+        margin: 13px 0;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        color: #4c5f51;
+      }
+
+      .check {
+        width: 25px;
+        height: 25px;
+
+        border-radius: 50%;
+
+        background: #dce8d4;
+
+        color: #47704f;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        font-size: 13px;
+      }
+
+      /* =========================================
+           MISSION / VISION
+        ========================================= */
+
+      .mission-section {
+        background: #edf3e9;
+      }
+
+      .mission-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 25px;
+      }
+
+      .mission-card {
+        padding: 45px;
+
+        background: white;
+
+        border-radius: 20px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        transition: 0.4s;
+      }
+
+      .mission-card:hover {
+        transform: translateY(-8px);
+
+        box-shadow: 0 15px 35px rgba(44, 74, 52, 0.1);
+      }
+
+      .mission-icon {
+        width: 65px;
+        height: 65px;
+
+        border-radius: 50%;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        background: #dce8d4;
+
+        font-size: 29px;
+
+        margin-bottom: 22px;
+      }
+
+      .mission-card h3 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 28px;
+
+        color: #31533c;
+
+        margin-bottom: 12px;
+      }
+
+      .mission-card p {
+        color: #737d75;
+
+        line-height: 1.8;
+      }
+
+      .mission-card::after {
+        content: "";
+
+        position: absolute;
+
+        width: 120px;
+        height: 120px;
+
+        border-radius: 50%;
+
+        background: #f3ead1;
+
+        right: -50px;
+        bottom: -50px;
+      }
+
+      /* =========================================
+           STATS
+        ========================================= */
+
+      .stats-section {
+        background: #294a35;
+
+        color: white;
+
+        padding: 75px 7%;
+      }
+
+      .stats-grid {
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 25px;
+
+        text-align: center;
+      }
+
+      .stat-card {
+        padding: 20px;
+      }
+
+      .stat-icon {
+        font-size: 30px;
+
+        margin-bottom: 10px;
+      }
+
+      .stat-number {
+        font-family: "Playfair Display", serif;
+
+        font-size: 46px;
+
+        color: #dfc477;
+
+        font-weight: 700;
+      }
+
+      .stat-card p {
+        color: #cbd7ce;
+
+        margin-top: 5px;
+      }
+
+      /* =========================================
+           VALUES
+        ========================================= */
+
+      .values-grid {
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 22px;
+      }
+
+      .value-card {
+        background: white;
+
+        padding: 35px 25px;
+
+        border-radius: 18px;
+
+        text-align: center;
+
+        border: 1px solid #e8ece4;
+
+        transition: 0.4s;
+      }
+
+      .value-card:hover {
+        transform: translateY(-8px);
+
+        border-color: #bdceb8;
+
+        box-shadow: 0 15px 30px rgba(44, 74, 52, 0.08);
+      }
+
+      .value-icon {
+        width: 70px;
+        height: 70px;
+
+        margin: 0 auto 20px;
+
+        border-radius: 50%;
+
+        background: #eef4e9;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        font-size: 30px;
+      }
+
+      .value-card h3 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 23px;
+
+        color: #31533c;
+
+        margin-bottom: 10px;
+      }
+
+      .value-card p {
+        font-size: 14px;
+
+        line-height: 1.7;
+
+        color: #788079;
+      }
+
+      /* =========================================
+           SUSTAINABILITY PROMISE
+        ========================================= */
+
+      .promise {
+        margin: 0 7% 90px;
+
+        min-height: 420px;
+
+        border-radius: 25px;
+
+        background:
+          linear-gradient(rgba(46, 74, 54, 0.76), rgba(46, 74, 54, 0.76)),
+          url("https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1800&q=85");
+
+        background-size: cover;
+
+        background-position: center;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        color: white;
+
+        padding: 50px 25px;
+      }
+
+      .promise-content {
+        max-width: 750px;
+      }
+
+      .promise-content h2 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 45px;
+
+        margin-bottom: 18px;
+      }
+
+      .promise-content p {
+        line-height: 1.8;
+
+        color: #e8eee9;
+      }
+
+      .promise-btn {
+        display: inline-block;
+
+        margin-top: 25px;
+
+        padding: 13px 30px;
+
+        background: #d9bd73;
+
+        color: #29382f;
+
+        border-radius: 30px;
+
+        font-weight: 700;
+      }
+
+      /* =========================================
+           TEAM
+        ========================================= */
+
+      .team-section {
+        background: #f0f4eb;
+      }
+
+      .team-grid {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 25px;
+      }
+
+      .team-card {
+        background: white;
+
+        border-radius: 20px;
+
+        overflow: hidden;
+
+        text-align: center;
+
+        transition: 0.4s;
+      }
+
+      .team-card:hover {
+        transform: translateY(-8px);
+
+        box-shadow: 0 15px 35px rgba(44, 74, 52, 0.1);
+      }
+
+      .team-image {
+        height: 300px;
+
+        overflow: hidden;
+      }
+
+      .team-image img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        transition: 0.5s;
+      }
+
+      .team-card:hover img {
+        transform: scale(1.06);
+      }
+
+      .team-info {
+        padding: 25px;
+      }
+
+      .team-info h3 {
+        font-family: "Playfair Display", serif;
+
+        color: #31533c;
+
+        font-size: 24px;
+      }
+
+      .team-info span {
+        color: #9a7b3c;
+
+        font-size: 13px;
+
+        font-weight: 600;
+      }
+
+      .team-info p {
+        color: #788079;
+
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        margin-top: 10px;
+      }
+
+      /* =========================================
+           TESTIMONIAL
+        ========================================= */
+
+      .testimonial {
+        padding: 90px 7%;
+
+        text-align: center;
+
+        background: #fbfaf5;
+      }
+
+      .quote {
+        max-width: 850px;
+
+        margin: auto;
+      }
+
+      .quote-icon {
+        font-size: 50px;
+
+        color: #c9aa63;
+      }
+
+      .quote p {
+        font-family: "Playfair Display", serif;
+
+        font-size: 29px;
+
+        line-height: 1.6;
+
+        color: #395340;
+
+        margin: 15px 0 25px;
+      }
+
+      .quote h4 {
+        color: #304b38;
+      }
+
+      .quote span {
+        font-size: 13px;
+
+        color: #879087;
+      }
+
+      /* =========================================
+           NEWSLETTER
+        ========================================= */
+
+      .newsletter {
+        padding: 70px 7%;
+
+        text-align: center;
+
+        background: #dfe9d8;
+      }
+
+      .newsletter h2 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 38px;
+
+        color: #2e4936;
+      }
+
+      .newsletter p {
+        color: #68756b;
+
+        margin: 10px 0 25px;
+      }
+
+      .newsletter-form {
+        display: flex;
+
+        max-width: 520px;
+
+        margin: auto;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+
+        padding: 15px 18px;
+
+        border: none;
+
+        outline: none;
+
+        border-radius: 8px 0 0 8px;
+      }
+
+      .newsletter-form button {
+        padding: 15px 25px;
+
+        border: none;
+
+        background: #3f6b4d;
+
+        color: white;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+        border-radius: 0 8px 8px 0;
+      }
+
+      /* =========================================
+           FOOTER
+        ========================================= */
+
+      footer {
+        background: #1e3024;
+
+        color: white;
+
+        padding: 45px 7% 25px;
+      }
+
+      .footer-grid {
+        display: grid;
+
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+
+        gap: 40px;
+
+        padding-bottom: 35px;
+      }
+
+      .footer-brand .logo {
+        color: white;
+      }
+
+      .footer-brand p {
+        color: #b9c6bc;
+
+        line-height: 1.7;
+
+        max-width: 360px;
+
+        margin-top: 15px;
+      }
+
+      .footer-column h4 {
+        margin-bottom: 15px;
+
+        color: #e0c477;
+      }
+
+      .footer-column a {
+        display: block;
+
+        color: #bdc8bf;
+
+        margin: 10px 0;
+
+        font-size: 14px;
+
+        transition: 0.3s;
+      }
+
+      .footer-column a:hover {
+        color: white;
+
+        padding-left: 4px;
+      }
+
+      .copyright {
+        border-top: 1px solid #3b4d40;
+
+        padding-top: 20px;
+
+        text-align: center;
+
+        color: #9eaba1;
+
+        font-size: 13px;
+      }
+
+      /* =========================================
+           RESPONSIVE - TABLET
+        ========================================= */
+
+      @media (max-width: 1050px) {
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .story-section {
+          gap: 40px;
+        }
+      }
+
+      /* =========================================
+           RESPONSIVE - MOBILE NAV
+        ========================================= */
+
+      @media (max-width: 800px) {
+        .nav-links {
+          position: absolute;
+
+          top: 70px;
+          left: 0;
+
+          width: 100%;
+
+          background: white;
+
+          flex-direction: column;
+
+          padding: 25px;
+
+          display: none;
+        }
+
+        .nav-links.show {
+          display: flex;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+
+        .dropdown-menu {
+          position: static;
+
+          width: 100%;
+
+          display: none;
+
+          opacity: 1;
+
+          visibility: visible;
+
+          transform: none;
+
+          box-shadow: none;
+
+          background: #f3f6ef;
+        }
+
+        .dropdown:hover .dropdown-menu {
+          display: block;
+        }
+
+        .story-section {
+          grid-template-columns: 1fr;
+        }
+
+        .story-image img {
+          height: 420px;
+        }
+
+        .experience-box {
+          right: 20px;
+        }
+
+        .mission-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* =========================================
+           RESPONSIVE - SMALL MOBILE
+        ========================================= */
+
+      @media (max-width: 550px) {
+        .navbar {
+          padding: 15px 5%;
+        }
+
+        .logo {
+          font-size: 25px;
+        }
+
+        .about-hero {
+          min-height: 500px;
+        }
+
+        .hero-content h1 {
+          font-size: 42px;
+        }
+
+        .hero-content p {
+          font-size: 15px;
+        }
+
+        .section {
+          padding: 65px 5%;
+        }
+
+        .section-heading h2 {
+          font-size: 34px;
+        }
+
+        .story-content h2 {
+          font-size: 35px;
+        }
+
+        .story-image img {
+          height: 350px;
+        }
+
+        .experience-box {
+          width: 145px;
+
+          padding: 18px;
+
+          right: 10px;
+        }
+
+        .experience-box strong {
+          font-size: 30px;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .stat-number {
+          font-size: 36px;
+        }
+
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .promise {
+          margin-left: 5%;
+          margin-right: 5%;
+        }
+
+        .promise-content h2 {
+          font-size: 34px;
+        }
+
+        .quote p {
+          font-size: 22px;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+
+          gap: 10px;
+        }
+
+        .newsletter-form input,
+        .newsletter-form button {
+          border-radius: 8px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =========================================
+     NAVBAR
+========================================= -->
+
+    <header class="navbar">
+      <div class="logo">Eco<span>Life</span></div>
+
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="index.html"> Home </a>
+        </li>
+
+        <li class="dropdown">
+          <a href="products.html">
+            Products
+            <span class="arrow">▼</span>
+          </a>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a href="products.html"> All Products </a>
+            </li>
+
+            <li>
+              <a href="kitchen.html"> Kitchen & Dining </a>
+            </li>
+
+            <li>
+              <a href="personal-care.html"> Personal Care </a>
+            </li>
+
+            <li>
+              <a href="reusable-bags.html"> Reusable Bags </a>
+            </li>
+
+            <li>
+              <a href="eco-accessories.html"> Eco Accessories </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="about.html" class="active"> About Us </a>
+        </li>
+
+        <li>
+          <a href="zero-waste-guide.html"> Zero Waste Guide </a>
+        </li>
+
+        <li>
+          <a href="contact.html"> Contact </a>
+        </li>
+      </ul>
+
+      <div class="nav-icons">
+        <button>♡</button>
+
+        <button>
+          <a href="cart.html"> 🛒 </a>
+          <span class="cart-count" id="cartCount"> 0 </span>
+        </button>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      </div>
+    </header>
+
+    <!-- =========================================
+     HERO
+========================================= -->
+
+    <section class="about-hero">
+      <div class="hero-content">
+        <span class="hero-tag"> Our Story • Our Purpose • Our Planet </span>
+
+        <h1>
+          Better Choices
+          <br />
+          for a <span>Better Planet</span>
+        </h1>
+
+        <p>
+          EcoLife was created with one simple belief: sustainable living should
+          be beautiful, accessible and easy for everyone.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#story" class="hero-btn"> Discover Our Story </a>
+
+          <a href="products.html" class="hero-btn outline">
+            Shop Sustainably
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+     OUR STORY
+========================================= -->
+
+    <section class="section" id="story">
+      <div class="story-section">
+        <div class="story-image">
+          <img
+            src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1000&q=85"
+            alt="Eco friendly lifestyle"
+          />
+
+          <div class="experience-box">
+            <strong> 5+ </strong>
+
+            <span> Years of sustainable living </span>
+          </div>
+        </div>
+
+        <div class="story-content">
+          <span class="label"> Who We Are </span>
+
+          <h2>Making Sustainability Feel Natural</h2>
+
+          <p>
+            EcoLife is an eco-conscious online store dedicated to helping people
+            make better everyday choices for themselves and the environment.
+          </p>
+
+          <p>
+            We carefully select reusable, recyclable, biodegradable and
+            ethically produced products that are designed to replace everyday
+            single-use alternatives.
+          </p>
+
+          <p>
+            Our goal isn't to ask you to change your entire lifestyle overnight.
+            Instead, we believe small changes, repeated every day, can create a
+            meaningful impact.
+          </p>
+
+          <ul class="story-list">
+            <li>
+              <span class="check">✓</span>
+              Responsibly selected products
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Sustainable packaging
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Long-lasting alternatives
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Planet-conscious shopping
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+     MISSION / VISION
+========================================= -->
+
+    <section class="section mission-section">
+      <div class="section-heading">
+        <span class="section-label"> What Drives Us </span>
+
+        <h2>Our Mission & Vision</h2>
+
+        <p>
+          We want to make sustainable living easier for everyone while
+          encouraging responsible consumption.
+        </p>
+      </div>
+
+      <div class="mission-grid">
+        <div class="mission-card">
+          <div class="mission-icon">🌱</div>
+
+          <h3>Our Mission</h3>
+
+          <p>
+            To provide beautiful, practical and affordable alternatives to
+            disposable products while educating our community about responsible
+            consumption.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <div class="mission-icon">🌎</div>
+
+          <h3>Our Vision</h3>
+
+          <p>
+            To build a world where sustainable choices become everyday choices
+            and where businesses and consumers work together for a healthier
+            planet.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+     STATISTICS
+========================================= -->
+
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">♻️</div>
+
+          <div class="stat-number" data-target="25000">0</div>
+
+          <p>Plastic Items Replaced</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🌱</div>
+
+          <div class="stat-number" data-target="12000">0</div>
+
+          <p>Happy Customers</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+
+          <div class="stat-number" data-target="95">0</div>
+
+          <p>% Plastic-Free Packaging</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🌳</div>
+
+          <div class="stat-number" data-target="3500">0</div>
+
+          <p>Trees Supported</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+     OUR VALUES
+========================================= -->
+
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-label"> What We Believe </span>
+
+        <h2>Our Core Values</h2>
+
+        <p>
+          Every decision we make is guided by our commitment to people, products
+          and planet.
+        </p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🌿</div>
+
+          <h3>Sustainability</h3>
+
+          <p>
+            We prioritize materials and products that reduce environmental
+            impact.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+
+          <h3>Transparency</h3>
+
+          <p>
+            We believe customers deserve honest information about the products
+            they buy.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">💚</div>
+
+          <h3>Quality</h3>
+
+          <p>Sustainable products should be durable, useful and beautiful.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">🌎</div>
+
+          <h3>Impact</h3>
+
+          <p>
+            Small everyday actions can create a meaningful collective
+            difference.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+     SUSTAINABILITY PROMISE
+========================================= -->
+
+    <section class="promise">
+      <div class="promise-content">
+        <h2>Our Promise to the Planet</h2>
+
+        <p>
+          We continuously look for better materials, better packaging and better
+          ways to reduce waste throughout our business.
+
+          <br /><br />
+
+          Because sustainability isn't a trend for us. It's a responsibility.
+        </p>
+
+        <a href="zero-waste-guide.html" class="promise-btn">
+          Learn About Zero Waste
+        </a>
+      </div>
+    </section>
+
+    <!-- =========================================
+     TEAM
+========================================= -->
+
+    <section class="section team-section">
+      <div class="section-heading">
+        <span class="section-label"> Meet The People </span>
+
+        <h2>The EcoLife Team</h2>
+
+        <p>
+          A small team with a big passion for creating a more sustainable
+          future.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-image">
+            <img
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=85"
+              alt="EcoLife founder"
+            />
+          </div>
+
+          <div class="team-info">
+            <h3>Sarah Green</h3>
+
+            <span> Founder & Sustainability Lead </span>
+
+            <p>
+              Passionate about turning sustainable ideas into everyday
+              solutions.
+            </p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-image">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=85"
+              alt="EcoLife product manager"
+            />
+          </div>
+
+          <div class="team-info">
+            <h3>Daniel Brooks</h3>
+
+            <span> Product & Sourcing Manager </span>
+
+            <p>
+              Works with responsible suppliers to discover better eco-friendly
+              products.
+            </p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-image">
+            <img
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=85"
+              alt="EcoLife community manager"
+            />
+          </div>
+
+          <div class="team-info">
+            <h3>Maya Carter</h3>
+
+            <span> Community Manager </span>
+
+            <p>
+              Inspires our community to make small changes that create lasting
+              impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+     TESTIMONIAL
+========================================= -->
+
+    <section class="testimonial">
+      <div class="quote">
+        <div class="quote-icon">“</div>
+
+        <p>
+          EcoLife makes sustainable shopping feel simple. I love knowing that
+          the small choices I make every day can contribute to something bigger.
+        </p>
+
+        <h4>Emma Wilson</h4>
+
+        <span> EcoLife Customer </span>
+      </div>
+    </section>
+
+    <!-- =========================================
+     NEWSLETTER
+========================================= -->
+
+    <section class="newsletter">
+      <h2>Join the EcoLife Community</h2>
+
+      <p>
+        Receive sustainable living tips, new product launches and special
+        offers.
+      </p>
+
+      <form class="newsletter-form" onsubmit="subscribe(event)">
+        <input type="email" placeholder="Enter your email address" required />
+
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- =========================================
+     FOOTER
+========================================= -->
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">Eco<span>Life</span></div>
+
+          <p>
+            Making sustainable living beautiful, practical and accessible for
+            everyone.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Shop</h4>
+
+          <a href="products.html"> All Products </a>
+
+          <a href="kitchen.html"> Kitchen & Dining </a>
+
+          <a href="personal-care.html"> Personal Care </a>
+
+          <a href="reusable-bags.html"> Reusable Bags </a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore</h4>
+
+          <a href="about.html"> About Us </a>
+
+          <a href="eco-accessories.html"> Eco Accessories </a>
+
+          <a href="zero-waste-guide.html"> Zero Waste Guide </a>
+
+          <a href="contact.html"> Contact </a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Follow Us</h4>
+
+          <a href="#"> Instagram </a>
+
+          <a href="#"> Facebook </a>
+
+          <a href="#"> Pinterest </a>
+
+          <a href="#"> TikTok </a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © 2026 EcoLife. All Rights Reserved. | Designed for a Sustainable Future
+        🌿
+      </div>
+    </footer>
+
+    <!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+    <script>
+      /* =========================================
+       MOBILE MENU
+    ========================================= */
+
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("show");
+      }
+
+      /* =========================================
+       CART
+    ========================================= */
+
+      let cartCount = 0;
+
+      function addToCart() {
+        cartCount++;
+
+        document.getElementById("cartCount").textContent = cartCount;
+      }
+
+      /* =========================================
+       ANIMATED STATISTICS
+    ========================================= */
+
+      const counters = document.querySelectorAll(".stat-number");
+
+      let counterStarted = false;
+
+      function animateCounters() {
+        if (counterStarted) return;
+
+        const statsSection = document.querySelector(".stats-section");
+
+        const position = statsSection.getBoundingClientRect().top;
+
+        if (position < window.innerHeight - 100) {
+          counterStarted = true;
+
+          counters.forEach((counter) => {
+            const target = Number(counter.dataset.target);
+
+            let current = 0;
+
+            const increment = Math.max(1, Math.ceil(target / 80));
+
+            const updateCounter = () => {
+              current += increment;
+
+              if (current >= target) {
+                counter.textContent = target.toLocaleString();
+
+                return;
+              }
+
+              counter.textContent = current.toLocaleString();
+
+              setTimeout(updateCounter, 25);
+            };
+
+            updateCounter();
+          });
+        }
+      }
+
+      window.addEventListener("scroll", animateCounters);
+
+      window.addEventListener("load", animateCounters);
+
+      /* =========================================
+       NEWSLETTER
+    ========================================= */
+
+      function subscribe(event) {
+        event.preventDefault();
+
+        alert("Thank you for joining the EcoLife community! 🌿");
+
+        event.target.reset();
+      }
+    </script>
+  </body>
+</html>
