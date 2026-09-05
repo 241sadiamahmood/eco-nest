@@ -602,28 +602,135 @@ document.addEventListener("DOMContentLoaded", function () {
   updateCartCount();
 });
 /* =====================================================
-   LOGGED-IN USERNAME
+   LOGGED-IN USER + USER DROPDOWN
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
+  const userMenu = document.getElementById("userMenu");
+  const userMenuBtn = document.getElementById("userMenuBtn");
+  const userDropdown = document.getElementById("userDropdown");
   const usernameDisplay = document.getElementById("usernameDisplay");
-  const loginLink = document.getElementById("loginLink");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const registerLink = document.getElementById("registerLink");
 
   if (!usernameDisplay) return;
 
   const isLoggedIn = localStorage.getItem("ecoLifeLoggedIn");
   const savedUser = JSON.parse(localStorage.getItem("ecoLifeUser"));
 
+  /* =====================================================
+     CHECK LOGIN STATUS
+  ===================================================== */
+
   if (isLoggedIn === "true" && savedUser) {
-    const fullName = `${savedUser.firstName} ${savedUser.lastName}`.trim();
 
-    usernameDisplay.textContent = fullName;
+    // Get user's full name
+    const fullName =
+      `${savedUser.firstName || ""} ${savedUser.lastName || ""}`.trim();
 
-    // Prevent clicking the username from opening login again
-    if (loginLink) {
-      loginLink.href = "#";
+    usernameDisplay.textContent = fullName || "User";
+
+    // Show user menu
+    if (userMenu) {
+      userMenu.style.display = "block";
     }
+
+    // Hide register button after login
+    if (registerLink) {
+      registerLink.style.display = "none";
+    }
+
   } else {
+
+    // User is not logged in
     usernameDisplay.textContent = "Login";
+
+    // Hide dropdown
+    if (userMenu) {
+      userMenu.style.display = "none";
+    }
+
+    // Show register button
+    if (registerLink) {
+      registerLink.style.display = "inline-flex";
+    }
+  }
+
+  /* =====================================================
+     OPEN / CLOSE USER DROPDOWN
+  ===================================================== */
+
+  if (userMenuBtn && userMenu) {
+
+    userMenuBtn.addEventListener("click", function (event) {
+
+      event.stopPropagation();
+
+      userMenu.classList.toggle("open");
+
+    });
+  }
+
+  /* =====================================================
+     CLOSE DROPDOWN WHEN CLICKING OUTSIDE
+  ===================================================== */
+
+  document.addEventListener("click", function (event) {
+
+    if (
+      userMenu &&
+      !userMenu.contains(event.target)
+    ) {
+      userMenu.classList.remove("open");
+    }
+
+  });
+
+  /* =====================================================
+     CLOSE DROPDOWN WITH ESCAPE KEY
+  ===================================================== */
+
+  document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+
+      if (userMenu) {
+        userMenu.classList.remove("open");
+      }
+
+    }
+
+  });
+
+  /* =====================================================
+     LOGOUT
+  ===================================================== */
+
+  if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", function () {
+
+      // Remove login session information
+      localStorage.removeItem("ecoLifeLoggedIn");
+      localStorage.removeItem("ecoLifeEmail");
+      localStorage.removeItem("ecoLifeUsername");
+
+      // Close dropdown
+      if (userMenu) {
+        userMenu.classList.remove("open");
+      }
+
+      // Show logout message if toast exists
+      if (typeof showToast === "function") {
+        showToast("Logout", "You have been logged out successfully.");
+      }
+
+      // Redirect to login page
+      setTimeout(function () {
+        window.location.href = "login.html";
+      }, 700);
+
+    });
+
   }
 });
