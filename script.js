@@ -7,22 +7,7 @@
 ===================================================== */
 
 const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-
 const navMenu = document.getElementById("navMenu");
-
-// mobileMenuBtn.addEventListener("click", () => {
-//   navMenu.classList.toggle("show");
-
-//   const icon = mobileMenuBtn.querySelector("i");
-
-//   if (navMenu.classList.contains("show")) {
-//     icon.classList.remove("fa-bars");
-//     icon.classList.add("fa-xmark");
-//   } else {
-//     icon.classList.remove("fa-xmark");
-//     icon.classList.add("fa-bars");
-//   }
-// });
 
 if (mobileMenuBtn) {
   mobileMenuBtn.addEventListener("click", () => {
@@ -45,27 +30,28 @@ if (mobileMenuBtn) {
 ===================================================== */
 
 const searchBtn = document.getElementById("searchBtn");
-
 const searchOverlay = document.getElementById("searchOverlay");
-
 const closeSearch = document.getElementById("closeSearch");
-
 const searchInput = document.getElementById("searchInput");
 
-searchBtn.addEventListener("click", () => {
-  searchOverlay.classList.add("show");
+if (searchBtn && searchOverlay && searchInput) {
+  searchBtn.addEventListener("click", () => {
+    searchOverlay.classList.add("show");
 
-  setTimeout(() => {
-    searchInput.focus();
-  }, 300);
-});
+    setTimeout(() => {
+      searchInput.focus();
+    }, 300);
+  });
+}
 
-closeSearch.addEventListener("click", () => {
-  searchOverlay.classList.remove("show");
-});
+if (closeSearch && searchOverlay) {
+  closeSearch.addEventListener("click", () => {
+    searchOverlay.classList.remove("show");
+  });
+}
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+  if (event.key === "Escape" && searchOverlay) {
     searchOverlay.classList.remove("show");
   }
 });
@@ -74,74 +60,76 @@ document.addEventListener("keydown", (event) => {
 
 document.querySelectorAll(".popular-searches button").forEach((button) => {
   button.addEventListener("click", () => {
-    searchInput.value = button.textContent;
-
-    searchInput.focus();
+    if (searchInput) {
+      searchInput.value = button.textContent;
+      searchInput.focus();
+    }
   });
 });
 
 /* Search */
 
-document.getElementById("searchSubmit").addEventListener("click", () => {
-  const searchValue = searchInput.value.trim();
+const searchSubmit = document.getElementById("searchSubmit");
 
-  if (searchValue === "") {
-    showToast("Search", "Please enter a product name.");
+if (searchSubmit) {
+  searchSubmit.addEventListener("click", () => {
+    const searchValue = searchInput ? searchInput.value.trim() : "";
 
-    return;
-  }
+    if (searchValue === "") {
+      showToast("Search", "Please enter a product name.");
+      return;
+    }
 
-  showToast("Search", `Searching for "${searchValue}"...`);
-});
+    showToast("Search", `Searching for "${searchValue}"...`);
+  });
+}
 
 /* =====================================================
    DARK / LIGHT MODE
 ===================================================== */
 
 const themeBtn = document.getElementById("themeBtn");
-
 const savedTheme = localStorage.getItem("ecolifeTheme");
 
 if (savedTheme === "dark") {
   document.body.classList.add("dark");
 
-  themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  if (themeBtn) {
+    themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  }
 }
 
-themeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
 
-  const isDark = document.body.classList.contains("dark");
+    const isDark = document.body.classList.contains("dark");
 
-  localStorage.setItem("ecolifeTheme", isDark ? "dark" : "light");
+    localStorage.setItem("ecolifeTheme", isDark ? "dark" : "light");
 
-  if (isDark) {
-    themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-
-    showToast("Dark Mode", "Dark mode enabled.");
-  } else {
-    themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-
-    showToast("Light Mode", "Light mode enabled.");
-  }
-});
+    if (isDark) {
+      themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+      showToast("Dark Mode", "Dark mode enabled.");
+    } else {
+      themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+      showToast("Light Mode", "Light mode enabled.");
+    }
+  });
+}
 
 /* =====================================================
    CART
 ===================================================== */
 
-// let cart = JSON.parse(localStorage.getItem("econestCart")) || [];
-// let cart = JSON.parse(localStorage.getItem("ecoLifeCart")) || [];
 let cart = JSON.parse(localStorage.getItem("ecoLifeCart")) || [];
 
 function updateCartCount() {
-  const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const total = cart.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
 
   document.querySelectorAll(".cart-count").forEach((badge) => {
     badge.textContent = total;
   });
 }
-// document.querySelectorAll(".add-cart").forEach(...)
 
 function addToCart(product) {
   const existing = cart.find((item) => item.name === product.name);
@@ -155,8 +143,6 @@ function addToCart(product) {
     });
   }
 
-  // localStorage.setItem("econestCart", JSON.stringify(cart));
-  // localStorage.setItem("ecoLifeCart", JSON.stringify(cart));
   localStorage.setItem("ecoLifeCart", JSON.stringify(cart));
 
   updateCartCount();
@@ -174,13 +160,12 @@ document.querySelectorAll(".add-cart").forEach((button) => {
   button.addEventListener("click", () => {
     const card = button.closest(".product-card");
 
+    if (!card) return;
+
     const product = {
       name: card.dataset.name,
-
       price: Number(card.dataset.price),
-
       category: card.dataset.category,
-
       image: card.dataset.image,
     };
 
@@ -191,14 +176,11 @@ document.querySelectorAll(".add-cart").forEach((button) => {
     button.innerHTML = '<i class="fa-solid fa-check"></i> Added';
 
     button.style.background = "#4f7d4b";
-
     button.style.color = "white";
 
     setTimeout(() => {
       button.innerHTML = original;
-
       button.style.background = "";
-
       button.style.color = "";
     }, 1200);
   });
@@ -219,16 +201,18 @@ function updateWishlistCount() {
 function updateWishlistButtons() {
   document.querySelectorAll(".product-card").forEach((card) => {
     const name = card.dataset.name;
-
     const button = card.querySelector(".product-wishlist");
 
+    if (!button) return;
+
     const icon = button.querySelector("i");
+
+    if (!icon) return;
 
     if (wishlist.some((item) => item.name === name)) {
       button.classList.add("liked");
 
       icon.classList.remove("fa-regular");
-
       icon.classList.add("fa-solid");
     }
   });
@@ -238,13 +222,12 @@ document.querySelectorAll(".product-wishlist").forEach((button) => {
   button.addEventListener("click", () => {
     const card = button.closest(".product-card");
 
+    if (!card) return;
+
     const product = {
       name: card.dataset.name,
-
       price: Number(card.dataset.price),
-
       category: card.dataset.category,
-
       image: card.dataset.image,
     };
 
@@ -258,7 +241,6 @@ document.querySelectorAll(".product-wishlist").forEach((button) => {
       button.classList.add("liked");
 
       icon.classList.remove("fa-regular");
-
       icon.classList.add("fa-solid");
 
       showToast("Wishlist", "Product added to wishlist.");
@@ -268,7 +250,6 @@ document.querySelectorAll(".product-wishlist").forEach((button) => {
       button.classList.remove("liked");
 
       icon.classList.remove("fa-solid");
-
       icon.classList.add("fa-regular");
 
       showToast("Wishlist", "Product removed.");
@@ -288,17 +269,11 @@ updateWishlistButtons();
 ===================================================== */
 
 const modal = document.getElementById("quickModal");
-
 const modalClose = document.getElementById("modalClose");
-
 const modalImage = document.getElementById("modalImage");
-
 const modalTitle = document.getElementById("modalTitle");
-
 const modalCategory = document.getElementById("modalCategory");
-
 const modalPrice = document.getElementById("modalPrice");
-
 const modalCart = document.getElementById("modalCart");
 
 let currentModalProduct = null;
@@ -307,25 +282,31 @@ document.querySelectorAll(".quick-view-btn").forEach((button) => {
   button.addEventListener("click", () => {
     const card = button.closest(".product-card");
 
+    if (!card || !modal) return;
+
     currentModalProduct = {
       name: card.dataset.name,
-
       price: Number(card.dataset.price),
-
       category: card.dataset.category,
-
       image: card.dataset.image,
     };
 
-    modalImage.src = currentModalProduct.image;
+    if (modalImage) {
+      modalImage.src = currentModalProduct.image;
+      modalImage.alt = currentModalProduct.name;
+    }
 
-    modalImage.alt = currentModalProduct.name;
+    if (modalTitle) {
+      modalTitle.textContent = currentModalProduct.name;
+    }
 
-    modalTitle.textContent = currentModalProduct.name;
+    if (modalCategory) {
+      modalCategory.textContent = currentModalProduct.category;
+    }
 
-    modalCategory.textContent = currentModalProduct.category;
-
-    modalPrice.textContent = `$${currentModalProduct.price.toFixed(2)}`;
+    if (modalPrice) {
+      modalPrice.textContent = `$${currentModalProduct.price.toFixed(2)}`;
+    }
 
     modal.classList.add("show");
 
@@ -334,40 +315,48 @@ document.querySelectorAll(".quick-view-btn").forEach((button) => {
 });
 
 function closeModal() {
+  if (!modal) return;
+
   modal.classList.remove("show");
 
   document.body.style.overflow = "";
 }
 
-modalClose.addEventListener("click", closeModal);
+if (modalClose) {
+  modalClose.addEventListener("click", closeModal);
+}
 
-modal.addEventListener("click", (event) => {
-  if (event.target === modal) {
-    closeModal();
-  }
-});
+if (modal) {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+}
 
-modalCart.addEventListener("click", () => {
-  if (currentModalProduct) {
-    addToCart(currentModalProduct);
+if (modalCart) {
+  modalCart.addEventListener("click", () => {
+    if (currentModalProduct) {
+      addToCart(currentModalProduct);
 
-    closeModal();
-  }
-});
+      closeModal();
+    }
+  });
+}
 
 /* =====================================================
    TOAST NOTIFICATION
 ===================================================== */
 
 const toast = document.getElementById("toast");
-
 const toastTitle = document.getElementById("toastTitle");
-
 const toastMessage = document.getElementById("toastMessage");
 
 let toastTimer;
 
 function showToast(title, message) {
+  if (!toast || !toastTitle || !toastMessage) return;
+
   toastTitle.textContent = title;
 
   toastMessage.textContent = message;
@@ -387,44 +376,46 @@ function showToast(title, message) {
 
 const counters = document.querySelectorAll(".counter");
 
-const counterObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        return;
-      }
-
-      const counter = entry.target;
-
-      const target = Number(counter.dataset.target);
-
-      let current = 0;
-
-      const increment = Math.max(1, Math.ceil(target / 80));
-
-      const timer = setInterval(() => {
-        current += increment;
-
-        if (current >= target) {
-          current = target;
-
-          clearInterval(timer);
+if (counters.length > 0) {
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
         }
 
-        counter.textContent = current.toLocaleString();
-      }, 20);
+        const counter = entry.target;
 
-      counterObserver.unobserve(counter);
-    });
-  },
-  {
-    threshold: 0.5,
-  },
-);
+        const target = Number(counter.dataset.target);
 
-counters.forEach((counter) => {
-  counterObserver.observe(counter);
-});
+        let current = 0;
+
+        const increment = Math.max(1, Math.ceil(target / 80));
+
+        const timer = setInterval(() => {
+          current += increment;
+
+          if (current >= target) {
+            current = target;
+
+            clearInterval(timer);
+          }
+
+          counter.textContent = current.toLocaleString();
+        }, 20);
+
+        counterObserver.unobserve(counter);
+      });
+    },
+    {
+      threshold: 0.5,
+    },
+  );
+
+  counters.forEach((counter) => {
+    counterObserver.observe(counter);
+  });
+}
 
 /* =====================================================
    REVIEW SLIDER
@@ -443,6 +434,10 @@ const reviewDots = document.querySelectorAll(".review-dot");
 let currentReview = 0;
 
 function showReview(index) {
+  if (!reviewsTrack || reviewCards.length === 0) {
+    return;
+  }
+
   if (index >= reviewCards.length) {
     currentReview = 0;
   } else if (index < 0) {
@@ -458,13 +453,17 @@ function showReview(index) {
   });
 }
 
-nextReview.addEventListener("click", () => {
-  showReview(currentReview + 1);
-});
+if (nextReview) {
+  nextReview.addEventListener("click", () => {
+    showReview(currentReview + 1);
+  });
+}
 
-prevReview.addEventListener("click", () => {
-  showReview(currentReview - 1);
-});
+if (prevReview) {
+  prevReview.addEventListener("click", () => {
+    showReview(currentReview - 1);
+  });
+}
 
 reviewDots.forEach((dot, index) => {
   dot.addEventListener("click", () => {
@@ -472,11 +471,11 @@ reviewDots.forEach((dot, index) => {
   });
 });
 
-/* Automatic slider */
-
-setInterval(() => {
-  showReview(currentReview + 1);
-}, 5000);
+if (reviewCards.length > 0) {
+  setInterval(() => {
+    showReview(currentReview + 1);
+  }, 5000);
+}
 
 /* =====================================================
    NEWSLETTER
@@ -484,19 +483,21 @@ setInterval(() => {
 
 const newsletterForm = document.getElementById("newsletterForm");
 
-newsletterForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+if (newsletterForm) {
+  newsletterForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const input = newsletterForm.querySelector("input");
+    const input = newsletterForm.querySelector("input");
 
-  if (input.value.trim() === "") {
-    return;
-  }
+    if (!input || input.value.trim() === "") {
+      return;
+    }
 
-  showToast("Welcome to EcoLife!", "Your 10% discount is on the way.");
+    showToast("Welcome to EcoLife!", "Your 10% discount is on the way.");
 
-  input.value = "";
-});
+    input.value = "";
+  });
+}
 
 /* =====================================================
    NAV LINK MOBILE CLOSE
@@ -504,13 +505,19 @@ newsletterForm.addEventListener("submit", (event) => {
 
 document.querySelectorAll(".nav-link").forEach((link) => {
   link.addEventListener("click", () => {
-    navMenu.classList.remove("show");
+    if (navMenu) {
+      navMenu.classList.remove("show");
+    }
 
-    const icon = mobileMenuBtn.querySelector("i");
+    if (mobileMenuBtn) {
+      const icon = mobileMenuBtn.querySelector("i");
 
-    icon.classList.remove("fa-xmark");
+      if (icon) {
+        icon.classList.remove("fa-xmark");
 
-    icon.classList.add("fa-bars");
+        icon.classList.add("fa-bars");
+      }
+    }
   });
 });
 
@@ -530,207 +537,170 @@ revealElements.forEach((element) => {
   element.style.transition = "opacity .7s ease, transform .7s ease";
 });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
+if (revealElements.length > 0) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
 
-        entry.target.style.transform = "translateY(0)";
+          entry.target.style.transform = "translateY(0)";
 
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.1,
-  },
-);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+    },
+  );
 
-revealElements.forEach((element) => {
-  revealObserver.observe(element);
-});
-document.addEventListener("DOMContentLoaded", function () {
-  // Get existing cart from localStorage
-  let cart = JSON.parse(localStorage.getItem("ecoLifeCart")) || [];
-
-  // Add product to cart
-  document.querySelectorAll(".add-cart").forEach(function (button) {
-    button.addEventListener("click", function () {
-      const productCard = button.closest(".product-card");
-
-      const product = {
-        name: productCard.dataset.name,
-        price: Number(productCard.dataset.price),
-        category: productCard.dataset.category,
-        image: productCard.dataset.image,
-        quantity: 1,
-      };
-
-      // Check if product already exists
-      const existingProduct = cart.find((item) => item.name === product.name);
-
-      if (existingProduct) {
-        existingProduct.quantity++;
-      } else {
-        cart.push(product);
-      }
-
-      // Save cart
-      localStorage.setItem("ecoLifeCart", JSON.stringify(cart));
-
-      // Update cart number
-      updateCartCount();
-
-      alert(product.name + " added to cart!");
-    });
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
   });
+}
 
-  // Update cart badge
-  function updateCartCount() {
-    const totalItems = cart.reduce(
-      (total, item) => total + Number(item.quantity),
-      0,
-    );
-
-    document.querySelectorAll(".cart-count").forEach(function (badge) {
-      badge.textContent = totalItems;
-    });
-  }
-
-  // Show saved cart count when page loads
-  updateCartCount();
-});
 /* =====================================================
-   LOGGED-IN USER + USER DROPDOWN
+   LOGGED-IN USER + DROPDOWN
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
-  const userMenu = document.getElementById("userMenu");
-  const userMenuBtn = document.getElementById("userMenuBtn");
-  const userDropdown = document.getElementById("userDropdown");
   const usernameDisplay = document.getElementById("usernameDisplay");
+
+  const userMenu = document.getElementById("userMenu");
+
+  const userMenuBtn = document.getElementById("userMenuBtn");
+
+  const userDropdown = document.getElementById("userDropdown");
+
   const logoutBtn = document.getElementById("logoutBtn");
+
   const registerLink = document.getElementById("registerLink");
 
-  if (!usernameDisplay) return;
+  /*
+       If the new user-menu HTML
+       is not present, stop here.
+    */
 
-  const isLoggedIn = localStorage.getItem("ecoLifeLoggedIn");
-  const savedUser = JSON.parse(localStorage.getItem("ecoLifeUser"));
+  if (!usernameDisplay || !userMenu || !userMenuBtn) {
+    return;
+  }
 
-  /* =====================================================
-     CHECK LOGIN STATUS
-  ===================================================== */
+  /* Check login status */
 
-  if (isLoggedIn === "true" && savedUser) {
+  const isLoggedIn = localStorage.getItem("ecoLifeLoggedIn") === "true";
 
-    // Get user's full name
-    const fullName =
-      `${savedUser.firstName || ""} ${savedUser.lastName || ""}`.trim();
+  /* Get registered user */
 
-    usernameDisplay.textContent = fullName || "User";
+  let savedUser = null;
 
-    // Show user menu
-    if (userMenu) {
-      userMenu.style.display = "block";
-    }
+  try {
+    savedUser = JSON.parse(localStorage.getItem("ecoLifeUser"));
+  } catch (error) {
+    savedUser = null;
+  }
 
-    // Hide register button after login
+  /* =================================================
+       USER IS LOGGED IN
+    ================================================= */
+
+  if (isLoggedIn && savedUser) {
+    const fullName = `${savedUser.firstName || ""} ${
+      savedUser.lastName || ""
+    }`.trim();
+
+    /*
+         Show username
+      */
+
+    usernameDisplay.textContent =
+      fullName || localStorage.getItem("ecoLifeUsername") || "User";
+
+    /*
+         Hide Register button
+      */
+
     if (registerLink) {
       registerLink.style.display = "none";
     }
 
-  } else {
-
-    // User is not logged in
-    usernameDisplay.textContent = "Login";
-
-    // Hide dropdown
-    if (userMenu) {
-      userMenu.style.display = "none";
-    }
-
-    // Show register button
-    if (registerLink) {
-      registerLink.style.display = "inline-flex";
-    }
-  }
-
-  /* =====================================================
-     OPEN / CLOSE USER DROPDOWN
-  ===================================================== */
-
-  if (userMenuBtn && userMenu) {
+    /*
+         Open / close dropdown
+      */
 
     userMenuBtn.addEventListener("click", function (event) {
-
       event.stopPropagation();
 
       userMenu.classList.toggle("open");
-
     });
-  }
 
-  /* =====================================================
-     CLOSE DROPDOWN WHEN CLICKING OUTSIDE
-  ===================================================== */
+    /*
+         Close dropdown when
+         clicking outside
+      */
 
-  document.addEventListener("click", function (event) {
-
-    if (
-      userMenu &&
-      !userMenu.contains(event.target)
-    ) {
-      userMenu.classList.remove("open");
-    }
-
-  });
-
-  /* =====================================================
-     CLOSE DROPDOWN WITH ESCAPE KEY
-  ===================================================== */
-
-  document.addEventListener("keydown", function (event) {
-
-    if (event.key === "Escape") {
-
-      if (userMenu) {
+    document.addEventListener("click", function (event) {
+      if (!userMenu.contains(event.target)) {
         userMenu.classList.remove("open");
       }
+    });
 
-    }
+    /*
+         Close dropdown with Escape
+      */
 
-  });
-
-  /* =====================================================
-     LOGOUT
-  ===================================================== */
-
-  if (logoutBtn) {
-
-    logoutBtn.addEventListener("click", function () {
-
-      // Remove login session information
-      localStorage.removeItem("ecoLifeLoggedIn");
-      localStorage.removeItem("ecoLifeEmail");
-      localStorage.removeItem("ecoLifeUsername");
-
-      // Close dropdown
-      if (userMenu) {
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
         userMenu.classList.remove("open");
       }
+    });
 
-      // Show logout message if toast exists
-      if (typeof showToast === "function") {
-        showToast("Logout", "You have been logged out successfully.");
-      }
+    /*
+         LOGOUT
+      */
 
-      // Redirect to login page
-      setTimeout(function () {
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", function () {
+        /*
+               Remove ONLY login session data.
+
+               Cart and wishlist are NOT removed.
+            */
+
+        localStorage.removeItem("ecoLifeLoggedIn");
+
+        localStorage.removeItem("ecoLifeEmail");
+
+        localStorage.removeItem("ecoLifeUsername");
+
+        /*
+               Go back to login page
+            */
+
         window.location.href = "login.html";
-      }, 700);
+      });
+    }
+  } else {
+    /* =================================================
+         USER IS NOT LOGGED IN
+      ================================================= */
 
+    usernameDisplay.textContent = "Login";
+
+    /*
+         Hide dropdown
+      */
+
+    if (userDropdown) {
+      userDropdown.style.display = "none";
+    }
+
+    /*
+         Clicking Login goes to login.html
+      */
+
+    userMenuBtn.addEventListener("click", function () {
+      window.location.href = "login.html";
     });
-
   }
 });
